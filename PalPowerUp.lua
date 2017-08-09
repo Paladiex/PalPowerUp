@@ -9,7 +9,7 @@ getVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalP
 latestVersion = getVersion()
 currentVersion = dofile(localPath .."version.lua")
 if currentVersion == latestVersion then
-    print ("You are up to date!")
+    toast ("You are up to date!")
 else
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/PalPowerUp.lua", localPath .."PalPowerUp.lua")
