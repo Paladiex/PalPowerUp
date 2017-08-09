@@ -8,6 +8,8 @@ setScanInterval(1/120)
 getVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua"))
 latestVersion = getVersion()
 currentVersion = dofile(localPath .."version.lua")
+print (currentVersion)
+print (latestVersion)
 if currentVersion == latestVersion then
     toast ("You are up to date!")
 else
