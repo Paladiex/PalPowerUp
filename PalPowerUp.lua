@@ -5,11 +5,11 @@ Settings:setCompareDimension(true, 1920)
 setScanInterval(1/120)
 
         --- This checks the version number on github to see if an update is needed ---
-getVersion = httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua")
-latestVersion = loadstring(getVersion)
+latestVersion = httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua")
 currentVersion = dofile(localPath .."version.lua")
 print (latestVersion)
 print (currentVersion)
+if current_version < http_version then print ("You are up to date!") else print ("You need to update!") end
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
