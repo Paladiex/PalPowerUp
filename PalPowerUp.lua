@@ -3,6 +3,17 @@ setImagePath(localPath .. "images")
 Settings:setScriptDimension(true, 1920)
 Settings:setCompareDimension(true, 1920)
 setScanInterval(1/120)
+
+        --- This checks the version number on github to see if an update is needed ---
+versionString = httpGet("https://github.com/Paladiex/PalPowerUp/blob/master/version.lua")
+
+print (versionString)
+
+f = loadstring(versionString)
+f()
+
+print (latestVersion )
+
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
