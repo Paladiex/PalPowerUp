@@ -15,7 +15,7 @@ if currentVersion == latestVersion then
 else
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/PalPowerUp.lua", localPath .."PalPowerUp.lua")
-    scriptExit("Updated PalPowerUp bot!")
+    scriptExit("You really have Updated PalPowerUp bot!")
 end
 
 --- These are the regions at the "Rune Power-up" screen ---
