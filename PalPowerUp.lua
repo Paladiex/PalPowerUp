@@ -8,9 +8,13 @@ setScanInterval(1/120)
 getVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua"))
 latestVersion = getVersion()
 currentVersion = dofile(localPath .."version.lua")
-print (latestVersion)
-print (currentVersion)
-if currentVersion == latestVersion then print ("You are up to date!") else print ("You need to update!") end
+if currentVersion == latestVersion then
+    print ("You are up to date!")
+else
+    httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
+    httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/PalPowerUp.lua", localPath .."PalPowerUp.lua")
+    scriptExit("Updated PalPowerUp bot!")
+end
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
