@@ -10,7 +10,7 @@ latestVersion = loadstring(getVersion)
 currentVersion = dofile(localPath .."version.lua")
 print (latestVersion)
 print (currentVersion)
-if current_version == latestVersion then print ("You are up to date!") else print ("You need to update!") end
+if current_version == latestVersion() then print ("You are up to date!") else print ("You need to update!") end
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
