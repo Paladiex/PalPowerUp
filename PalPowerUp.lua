@@ -5,7 +5,7 @@ Settings:setCompareDimension(true, 1920)
 setScanInterval(1/120)
 
         --- This checks the version number on github to see if an update is needed ---
-versionString = httpGet("https://github.com/Paladiex/PalPowerUp/blob/master/version.lua")
+versionString = httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua")
 
 print (versionString)
 
