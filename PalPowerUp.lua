@@ -38,38 +38,46 @@ sixStarRune = (Pattern("6starRunePowerUp.png"):similar(.80))
 fiveStarRune = (Pattern("5starRunePowerUp.png"):similar(.70))
 
 --- These are the possible Rune Level Images ---
-sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70))
-sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70))
-sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70))
-sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70))
-sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70))
-sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70))
-sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70))
-sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70))
-sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70))
-sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70))
-sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70))
-sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70))
-sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70))
-sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70))
-sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70))
-sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70))
-fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70))
-fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70))
-fiveStarLvl2 = (Pattern("5starLvl2.png"):similar(.70))
-fiveStarLvl3 = (Pattern("5starLvl3.png"):similar(.70))
-fiveStarLvl4 = (Pattern("5starLvl4.png"):similar(.70))
-fiveStarLvl5 = (Pattern("5starLvl5.png"):similar(.70))
-fiveStarLvl6 = (Pattern("5starLvl6.png"):similar(.70))
-fiveStarLvl7 = (Pattern("5starLvl7.png"):similar(.70))
-fiveStarLvl8 = (Pattern("5starLvl8.png"):similar(.70))
-fiveStarLvl9 = (Pattern("5starLvl9.png"):similar(.70))
-fiveStarLvl10 = (Pattern("5starLvl10.png"):similar(.70))
-fiveStarLvl11 = (Pattern("5starLvl11.png"):similar(.70))
-fiveStarLvl12 = (Pattern("5starLvl12.png"):similar(.70))
-fiveStarLvl13 = (Pattern("5starLvl13.png"):similar(.70))
-fiveStarLvl14 = (Pattern("5starLvl14.png"):similar(.70))
-fiveStarLvl15 = (Pattern("5starLvl15.png"):similar(.70))
+data = {    sixStarImages = {
+sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70)),
+sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70)),
+sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70)),
+sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70)),
+sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70)),
+sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70)),
+sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70)),
+sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70)),
+sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70)),
+sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70)),
+sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70)),
+sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70)),
+sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70)),
+sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70)),
+sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70)),
+sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70)) },
+            fiveStarImages ={
+fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)),
+fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)),
+fiveStarLvl2 = (Pattern("5starLvl2.png"):similar(.70)),
+fiveStarLvl3 = (Pattern("5starLvl3.png"):similar(.70)),
+fiveStarLvl4 = (Pattern("5starLvl4.png"):similar(.70)),
+fiveStarLvl5 = (Pattern("5starLvl5.png"):similar(.70)),
+fiveStarLvl6 = (Pattern("5starLvl6.png"):similar(.70)),
+fiveStarLvl7 = (Pattern("5starLvl7.png"):similar(.70)),
+fiveStarLvl8 = (Pattern("5starLvl8.png"):similar(.70)),
+fiveStarLvl9 = (Pattern("5starLvl9.png"):similar(.70)),
+fiveStarLvl10 = (Pattern("5starLvl10.png"):similar(.70)),
+fiveStarLvl11 = (Pattern("5starLvl11.png"):similar(.70)),
+fiveStarLvl12 = (Pattern("5starLvl12.png"):similar(.70)),
+fiveStarLvl13 = (Pattern("5starLvl13.png"):similar(.70)),
+fiveStarLvl14 = (Pattern("5starLvl14.png"):similar(.70)),
+fiveStarLvl15 = (Pattern("5starLvl15.png"):similar(.70)) },
+            starID = {
+                "Level 0", "Level 1", "Level 2", "Level 3", "Level 4",
+                "Level 5", "Level 6", "Level 7", "Level 8", "Level 9",
+                "Level 10", "Level 11", "Level 12", "Level 13", "Level 14",
+                "Level 15"}
+}
 
 --- These are the possible Mainstat Images ---
 hpMain = (Pattern("hpMain.png"):similar(.70))
@@ -108,7 +116,6 @@ subStatValue4 = "Unknown"
 --- This scans the rank/stars of the rune ---
 function findRuneRank()
     runeRankRegion:highlight()
-    usePreviousSnap(true)
     if runeRankRegion:exists(sixStarRune) then
         runeRank = 6
     elseif runeRankRegion:exists(fiveStarRune) then
@@ -118,13 +125,27 @@ function findRuneRank()
     end
     runeRankRegion:highlight()
     statRegion7:highlight("Rune Rank: " .. runeRank)
-    usePreviousSnap(false)
 end
 
 --- This scans the cost to upgrade the rune in order to determine it's level ---
 function findRuneLvl()
+    if runeRank == 6 then
+        index, match = existsMultiMax(data.sixStarImages, mainStatRegion)
+        if match then
+            match:highlight(2)
+            runelevel = (data.images[index])
+        end
+    end
+    if runeRank == 5 then
+        index, match = existsMultiMax(data.fiveStarImages, mainStatRegion)
+        if match then
+            match:highlight(2)
+            runelevel = (data.images[index])
+        end
+    end
+end
+function findRuneLvlOrig()
     runeLvlRegion:highlight()
-    usePreviousSnap(true)
     if runeRank == 6 then
         if runeLvlRegion:exists(sixStarLvl0) then
             runeLvl = 0
@@ -201,13 +222,11 @@ function findRuneLvl()
     end
     runeLvlRegion:highlight()
     statRegion8:highlight("Rune Lvl: " .. runeLvl)
-    usePreviousSnap(false)
 end
 
 --- This scans each region for a stat, then the stat value ---
 function findMainStat()
     mainStatRegion:highlight()
-    usePreviousSnap(true)
     if mainStatRegion:exists(hpMain) then
         if mainStatValueRegion:exists(percentMain) then
             mainStat = "HP%"
@@ -239,11 +258,9 @@ function findMainStat()
     end
     mainStatRegion:highlight()
     statRegion1:highlight("Main Stat: " .. mainStat)
-    usePreviousSnap(false)
 end
 function findSubStat1()
     subStat1Region:highlight()
-    usePreviousSnap(true)
     if subStat1Region:exists(hpSub) then
         if subStatValue1Region:exists(percentSub) then
             subStat1 = "HP%"
@@ -275,11 +292,9 @@ function findSubStat1()
     end
     subStat1Region:highlight()
     statRegion2:highlight("Substat 1: " .. subStat1)
-    usePreviousSnap(false)
 end
 function findSubStat2()
     subStat2Region:highlight()
-    usePreviousSnap(true)
     if subStat2Region:exists(hpSub) then
         if subStatValue2Region:exists(percentSub) then
             subStat2 = "HP%"
@@ -311,11 +326,9 @@ function findSubStat2()
     end
     subStat2Region:highlight()
     statRegion3:highlight("Substat 2: " .. subStat2)
-    usePreviousSnap(false)
 end
 function findSubStat3()
     subStat3Region:highlight()
-    usePreviousSnap(true)
     if subStat3Region:exists(hpSub) then
         if subStatValue3Region:exists(percentSub) then
             subStat3 = "HP%"
@@ -347,11 +360,9 @@ function findSubStat3()
     end
     subStat3Region:highlight()
     statRegion4:highlight("Substat 3: " .. subStat3)
-    usePreviousSnap(false)
 end
 function findSubStat4()
     subStat4Region:highlight()
-    usePreviousSnap(true)
     if subStat4Region:exists(hpSub) then
         if subStatValue4Region:exists(percentSub) then
             subStat4 = "HP%"
@@ -383,11 +394,9 @@ function findSubStat4()
     end
     subStat4Region:highlight()
     statRegion5:highlight("Substat 4: " .. subStat4)
-    usePreviousSnap(false)
 end
 function findSubStat5()
     subStat5Region:highlight()
-    usePreviousSnap(true)
     if subStat5Region:exists(hpSub) then
         if subStatValue5Region:exists(percentSub) then
             subStat5 = "HP%"
@@ -419,7 +428,6 @@ function findSubStat5()
     end
     subStat5Region:highlight()
     statRegion6:highlight("Substat 5: " .. subStat5)
-    usePreviousSnap(false)
 end
 
 --- This is a specified region that displays what the bot thinks it can see ---
@@ -441,4 +449,5 @@ while true do
     findSubStat2()
     findSubStat3()
     findSubStat4()
+    findSubStat5()
 end
