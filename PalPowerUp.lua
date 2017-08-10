@@ -125,7 +125,7 @@ end
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
-        local i, id, match = regionWaitMulti(data.sixStarImages, 30, true, nil)
+        local i, id, match = regionWaitMulti(sixStarImages, 30, true, nil)
         runeLvl = id
         print("Rune Rank - ", 6)
         print("i - ", i)
@@ -133,7 +133,7 @@ function findRuneLvl()
         print("match - ", match)
     end
     if runeRank == 5 then
-        local i, id, match = regionWaitMulti(data.fiveStarImages, 30, true, nil)
+        local i, id, match = regionWaitMulti(fiveStarImages, 30, true, nil)
         runeLvl = id
         print("Rune Rank - ", 5)
         print("i - ", i)
