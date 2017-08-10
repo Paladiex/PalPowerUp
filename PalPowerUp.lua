@@ -108,6 +108,7 @@ subStatValue4 = "Unknown"
 --- This scans the rank/stars of the rune ---
 function findRuneRank()
     runeRankRegion:highlight()
+    usePreviousSnap(true)
     if runeRankRegion:exists(sixStarRune) then
         runeRank = 6
     elseif runeRankRegion:exists(fiveStarRune) then
@@ -117,11 +118,13 @@ function findRuneRank()
     end
     runeRankRegion:highlight()
     statRegion7:highlight("Rune Rank: " .. runeRank)
+    usePreviousSnap(false)
 end
 
 --- This scans the cost to upgrade the rune in order to determine it's level ---
 function findRuneLvl()
     runeLvlRegion:highlight()
+    usePreviousSnap(true)
     if runeRank == 6 then
         if runeLvlRegion:exists(sixStarLvl0) then
             runeLvl = 0
@@ -198,11 +201,13 @@ function findRuneLvl()
     end
     runeLvlRegion:highlight()
     statRegion8:highlight("Rune Lvl: " .. runeLvl)
+    usePreviousSnap(false)
 end
 
 --- This scans each region for a stat, then the stat value ---
 function findMainStat()
     mainStatRegion:highlight()
+    usePreviousSnap(true)
     if mainStatRegion:exists(hpMain) then
         if mainStatValueRegion:exists(percentMain) then
             mainStat = "HP%"
@@ -234,9 +239,11 @@ function findMainStat()
     end
     mainStatRegion:highlight()
     statRegion1:highlight("Main Stat: " .. mainStat)
+    usePreviousSnap(false)
 end
 function findSubStat1()
     subStat1Region:highlight()
+    usePreviousSnap(true)
     if subStat1Region:exists(hpSub) then
         if subStatValue1Region:exists(percentSub) then
             subStat1 = "HP%"
@@ -268,9 +275,11 @@ function findSubStat1()
     end
     subStat1Region:highlight()
     statRegion2:highlight("Substat 1: " .. subStat1)
+    usePreviousSnap(false)
 end
 function findSubStat2()
     subStat2Region:highlight()
+    usePreviousSnap(true)
     if subStat2Region:exists(hpSub) then
         if subStatValue2Region:exists(percentSub) then
             subStat2 = "HP%"
@@ -302,9 +311,11 @@ function findSubStat2()
     end
     subStat2Region:highlight()
     statRegion3:highlight("Substat 2: " .. subStat2)
+    usePreviousSnap(false)
 end
 function findSubStat3()
     subStat3Region:highlight()
+    usePreviousSnap(true)
     if subStat3Region:exists(hpSub) then
         if subStatValue3Region:exists(percentSub) then
             subStat3 = "HP%"
@@ -336,9 +347,11 @@ function findSubStat3()
     end
     subStat3Region:highlight()
     statRegion4:highlight("Substat 3: " .. subStat3)
+    usePreviousSnap(false)
 end
 function findSubStat4()
     subStat4Region:highlight()
+    usePreviousSnap(true)
     if subStat4Region:exists(hpSub) then
         if subStatValue4Region:exists(percentSub) then
             subStat4 = "HP%"
@@ -370,9 +383,11 @@ function findSubStat4()
     end
     subStat4Region:highlight()
     statRegion5:highlight("Substat 4: " .. subStat4)
+    usePreviousSnap(false)
 end
 function findSubStat5()
     subStat5Region:highlight()
+    usePreviousSnap(true)
     if subStat5Region:exists(hpSub) then
         if subStatValue5Region:exists(percentSub) then
             subStat5 = "HP%"
@@ -404,6 +419,7 @@ function findSubStat5()
     end
     subStat5Region:highlight()
     statRegion6:highlight("Substat 5: " .. subStat5)
+    usePreviousSnap(false)
 end
 
 --- This is a specified region that displays what the bot thinks it can see ---
