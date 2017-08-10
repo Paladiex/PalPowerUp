@@ -108,31 +108,25 @@ function findMainStat()
     mainStatRegion:highlight()
     local bestMatchIndex = existsMultiMax(mainStatImages, mainStatRegion)
     if (bestMatchIndex == 1) then
-        UsePreviousSnap(true)
-        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
             mainStat = ("HP%")
         else
             mainStat = ("HP")
         end
-        UsePreviousSnap(false)
     end
     if (bestMatchIndex == 2) then
-        UsePreviousSnap(true)
-        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
             mainStat = ("DEF%")
         else
             mainStat = ("DEF")
         end
-        UsePreviousSnap(false)
     end
     if (bestMatchIndex == 3) then
-        UsePreviousSnap(true)
-        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
             mainStat = ("ATK%")
         else
             mainStat = ("ATK")
         end
-        UsePreviousSnap(false)
     end
     if (bestMatchIndex == 4) then
         mainStat = ("SPD")
