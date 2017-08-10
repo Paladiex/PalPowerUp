@@ -126,14 +126,12 @@ end
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
-        local choice, listmatch = regionWaitMulti(data.sixStarImages, 30, false, nil)
-        listmatch:highlight()
-        runeLvl = choice
+        local choice regionWaitMulti(data.sixStarImages, 30, false, nil)
+        runeLvl = choice.id
     end
     if runeRank == 5 then
-        local choice, listmatch = regionWaitMulti(data.fiveStarImages, 30, false, nil)
-        listmatch:highlight()
-        runeLvl = choice
+        local choice regionWaitMulti(data.fiveStarImages, 30, false, nil)
+        runeLvl = choice.id
     end
     runeLvlRegion:highlight()
     statRegion8:highlight("Rune" .. runeLvl)
