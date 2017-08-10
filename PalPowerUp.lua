@@ -48,15 +48,8 @@ fiveStarImages ={   "5starLvl0.png", "5starLvl1.png", "5starLvl2.png", "5starLvl
                     "5starLvl12.png", "5starLvl13.png", "5starLvl14.png", "5starLvl15.png" }
 
 --- These are the possible Mainstat Images ---
-hpMain = (Pattern("hpMain.png"):similar(.70))
-defMain = (Pattern("defMain.png"):similar(.70))
-atkMain = (Pattern("atkMain.png"):similar(.70))
-spdMain = (Pattern("spdMain.png"):similar(.70))
-criRateMain = (Pattern("criRateMain.png"):similar(.70))
-criDmgMain = (Pattern("criDmgMain.png"):similar(.70))
-resMain = (Pattern("resMain.png"):similar(.70))
-accMain = (Pattern("accMain.png"):similar(.70))
-percentMain = (Pattern("percentMain.png"):similar(.70))
+mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "criRateMain.png",
+                    "criDmgMain.png", "resMain.png", "accMain.png", "percentMain.png"}
 
 --- These are the possible Substat Images ---
 hpSub = (Pattern("hpSub.png"):similar(.70))
@@ -109,117 +102,52 @@ function findRuneLvl()
     runeLvlRegion:highlight()
     statRegion8:highlight("Rune" .. runeLvl)
 end
-function findRuneLvlOrig()
-    runeLvlRegion:highlight()
-    if runeRank == 6 then
-        if runeLvlRegion:exists(sixStarLvl0) then
-            runeLvl = 0
-        elseif runeLvlRegion:exists(sixStarLvl1) then
-            runeLvl = 1
-        elseif runeLvlRegion:exists(sixStarLvl2) then
-            runeLvl = 2
-        elseif runeLvlRegion:exists(sixStarLvl3) then
-            runeLvl = 3
-        elseif runeLvlRegion:exists(sixStarLvl4) then
-            runeLvl = 4
-        elseif runeLvlRegion:exists(sixStarLvl5) then
-            runeLvl = 5
-        elseif runeLvlRegion:exists(sixStarLvl6) then
-            runeLvl = 6
-        elseif runeLvlRegion:exists(sixStarLvl7) then
-            runeLvl = 7
-        elseif runeLvlRegion:exists(sixStarLvl8) then
-            runeLvl = 8
-        elseif runeLvlRegion:exists(sixStarLvl9) then
-            runeLvl = 9
-        elseif runeLvlRegion:exists(sixStarLvl10) then
-            runeLvl = 10
-        elseif runeLvlRegion:exists(sixStarLvl11) then
-            runeLvl = 11
-        elseif runeLvlRegion:exists(sixStarLvl12) then
-            runeLvl = 12
-        elseif runeLvlRegion:exists(sixStarLvl13) then
-            runeLvl = 13
-        elseif runeLvlRegion:exists(sixStarLvl14) then
-            runeLvl = 14
-        elseif runeLvlRegion:exists(sixStarLvl15) then
-            runeLvl = 15
-        else
-            runeLvl = "Unknown"
-        end
-    end
-    if runeRank == 5 then
-        if runeLvlRegion:exists(fiveStarLvl0) then
-            runeLvl = 0
-        elseif runeLvlRegion:exists(fiveStarLvl1) then
-            runeLvl = 1
-        elseif runeLvlRegion:exists(fiveStarLvl2) then
-            runeLvl = 2
-        elseif runeLvlRegion:exists(fiveStarLvl3) then
-            runeLvl = 3
-        elseif runeLvlRegion:exists(fiveStarLvl4) then
-            runeLvl = 4
-        elseif runeLvlRegion:exists(fiveStarLvl5) then
-            runeLvl = 5
-        elseif runeLvlRegion:exists(fiveStarLvl6) then
-            runeLvl = 6
-        elseif runeLvlRegion:exists(fiveStarLvl7) then
-            runeLvl = 7
-        elseif runeLvlRegion:exists(fiveStarLvl8) then
-            runeLvl = 8
-        elseif runeLvlRegion:exists(fiveStarLvl9) then
-            runeLvl = 9
-        elseif runeLvlRegion:exists(fiveStarLvl10) then
-            runeLvl = 10
-        elseif runeLvlRegion:exists(fiveStarLvl11) then
-            runeLvl = 11
-        elseif runeLvlRegion:exists(fiveStarLvl12) then
-            runeLvl = 12
-        elseif runeLvlRegion:exists(fiveStarLvl13) then
-            runeLvl = 13
-        elseif runeLvlRegion:exists(fiveStarLvl14) then
-            runeLvl = 14
-        elseif runeLvlRegion:exists(fiveStarLvl15) then
-            runeLvl = 15
-        else
-            runeLvl = "Unknown"
-        end
-    end
-    runeLvlRegion:highlight()
-    statRegion8:highlight("Rune Lvl: " .. runeLvl)
-end
 
 --- This scans each region for a stat, then the stat value ---
 function findMainStat()
     mainStatRegion:highlight()
-    if mainStatRegion:exists(hpMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "HP%"
+    local bestMatchIndex = existsMultiMax(mainStatImages, mainStatRegion)
+    if (bestMatchIndex == 1) then
+        UsePreviousSnap(true)
+        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("HP%")
         else
-            mainStat = "HP"
+            mainStat = ("HP")
         end
-    elseif mainStatRegion:exists(defMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "DEF%"
+        UsePreviousSnap(false)
+    end
+    if (bestMatchIndex == 2) then
+        UsePreviousSnap(true)
+        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("DEF%")
         else
-            mainStat = "DEF"
+            mainStat = ("DEF")
         end
-    elseif mainStatRegion:exists(atkMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "ATK%"
+        UsePreviousSnap(false)
+    end
+    if (bestMatchIndex == 3) then
+        UsePreviousSnap(true)
+        if  mainStatRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("ATK%")
         else
-            mainStat = "ATK"
+            mainStat = ("ATK")
         end
-    elseif mainStatRegion:exists(spdMain) then
-        mainStat = "SPD"
-    elseif mainStatRegion:exists(criRateMain) then
-        mainStat = "CRI Rate"
-    elseif mainStatRegion:exists(criDmgMain) then
-        mainStat = "CRI DMG"
-    elseif mainStatRegion:exists(resMain) then
-        mainStat = "RES"
-    elseif mainStatRegion:exists(accMain) then
-        mainStat = "ACC"
+        UsePreviousSnap(false)
+    end
+    if (bestMatchIndex == 4) then
+        mainStat = ("SPD")
+    end
+    if (bestMatchIndex == 5) then
+        mainStat = ("CRI Rate")
+    end
+    if (bestMatchIndex == 6) then
+        mainStat = ("CRI DMG")
+    end
+    if (bestMatchIndex == 7) then
+        mainStat = ("RES")
+    end
+    if (bestMatchIndex == 8) then
+        mainStat = ("ACC")
     end
     mainStatRegion:highlight()
     statRegion1:highlight("Main Stat: " .. mainStat)
