@@ -39,44 +39,39 @@ fiveStarRune = (Pattern("5starRunePowerUp.png"):similar(.70))
 
 --- These are the possible Rune Level Images ---
 data = {    sixStarImages = {
-sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70)),
-sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70)),
-sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70)),
-sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70)),
-sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70)),
-sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70)),
-sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70)),
-sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70)),
-sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70)),
-sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70)),
-sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70)),
-sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70)),
-sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70)),
-sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70)),
-sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70)),
-sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70)) },
-            fiveStarImages ={
-fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)),
-fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)),
-fiveStarLvl2 = (Pattern("5starLvl2.png"):similar(.70)),
-fiveStarLvl3 = (Pattern("5starLvl3.png"):similar(.70)),
-fiveStarLvl4 = (Pattern("5starLvl4.png"):similar(.70)),
-fiveStarLvl5 = (Pattern("5starLvl5.png"):similar(.70)),
-fiveStarLvl6 = (Pattern("5starLvl6.png"):similar(.70)),
-fiveStarLvl7 = (Pattern("5starLvl7.png"):similar(.70)),
-fiveStarLvl8 = (Pattern("5starLvl8.png"):similar(.70)),
-fiveStarLvl9 = (Pattern("5starLvl9.png"):similar(.70)),
-fiveStarLvl10 = (Pattern("5starLvl10.png"):similar(.70)),
-fiveStarLvl11 = (Pattern("5starLvl11.png"):similar(.70)),
-fiveStarLvl12 = (Pattern("5starLvl12.png"):similar(.70)),
-fiveStarLvl13 = (Pattern("5starLvl13.png"):similar(.70)),
-fiveStarLvl14 = (Pattern("5starLvl14.png"):similar(.70)),
-fiveStarLvl15 = (Pattern("5starLvl15.png"):similar(.70)) },
-            starID = {
-                "Level 0", "Level 1", "Level 2", "Level 3", "Level 4",
-                "Level 5", "Level 6", "Level 7", "Level 8", "Level 9",
-                "Level 10", "Level 11", "Level 12", "Level 13", "Level 14",
-                "Level 15"}
+                {sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
+                {sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
+                {sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
+                {sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
+                {sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
+                {sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
+                {sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
+                {sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
+                {sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
+                {sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
+                {sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
+                {sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
+                {sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
+                {sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
+                {sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
+                {sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"} },
+            fiveStarImages = {
+                {fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
+                {fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
+                {fiveStarLvl2 = (Pattern("5starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
+                {fiveStarLvl3 = (Pattern("5starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
+                {fiveStarLvl4 = (Pattern("5starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
+                {fiveStarLvl5 = (Pattern("5starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
+                {fiveStarLvl6 = (Pattern("5starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
+                {fiveStarLvl7 = (Pattern("5starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
+                {fiveStarLvl8 = (Pattern("5starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
+                {fiveStarLvl9 = (Pattern("5starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
+                {fiveStarLvl10 = (Pattern("5starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
+                {fiveStarLvl11 = (Pattern("5starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
+                {fiveStarLvl12 = (Pattern("5starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
+                {fiveStarLvl13 = (Pattern("5starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
+                {fiveStarLvl14 = (Pattern("5starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
+                {fiveStarLvl15 = (Pattern("5starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"} }
 }
 
 --- These are the possible Mainstat Images ---
@@ -131,21 +126,15 @@ end
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
-        index, match = existsMultiMax(data.sixStarImages, runeLvlRegion)
-        if match then
-            match:highlight(2)
-            runeLevel = (data.images[index])
-        end
+        regionWaitMulti(data.sixStarImages, 30, true, nil)
+        runeLvl = id
     end
     if runeRank == 5 then
-        index, match = existsMultiMax(data.fiveStarImages, runeLvlRegion)
-        if match then
-            match:highlight(2)
-            runeLevel = (data.images[index])
-        end
+        regionWaitMulti(data.fiveStarImages, 30, true, nil)
+        runeLvl = id
     end
     runeLvlRegion:highlight()
-    statRegion8:highlight("Rune Lvl: " .. runeLvl)
+    statRegion8:highlight("Rune" .. runeLvl)
 end
 function findRuneLvlOrig()
     runeLvlRegion:highlight()
