@@ -134,14 +134,14 @@ function findRuneLvl()
         index, match = existsMultiMax(data.sixStarImages, runeLvlRegion)
         if match then
             match:highlight(2)
-            runelevel = (data.images[index])
+            runeLevel = (data.images[index])
         end
     end
     if runeRank == 5 then
         index, match = existsMultiMax(data.fiveStarImages, runeLvlRegion)
         if match then
             match:highlight(2)
-            runelevel = (data.images[index])
+            runeLevel = (data.images[index])
         end
     end
     runeLvlRegion:highlight()
