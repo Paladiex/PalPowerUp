@@ -126,11 +126,11 @@ end
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
-        regionWaitMulti(data.sixStarImages, 30, true, nil)
+        regionWaitMulti(data.sixStarImages, 30, false, nil)
         runeLvl = id
     end
     if runeRank == 5 then
-        regionWaitMulti(data.fiveStarImages, 30, true, nil)
+        regionWaitMulti(data.fiveStarImages, 30, false, nil)
         runeLvl = id
     end
     runeLvlRegion:highlight()
