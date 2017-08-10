@@ -39,22 +39,22 @@ fiveStarRune = (Pattern("5starRunePowerUp.png"):similar(.70))
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {
-                {target = (Pattern("6starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
-                {target = (Pattern("6starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
-                {target = (Pattern("6starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
-                {target = (Pattern("6starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
-                {target = (Pattern("6starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
-                {target = (Pattern("6starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
-                {target = (Pattern("6starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
-                {target = (Pattern("6starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
-                {target = (Pattern("6starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
-                {target = (Pattern("6starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
-                {target = (Pattern("6starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
-                {target = (Pattern("6starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
-                {target = (Pattern("6starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
-                {starget = (Pattern("6starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
-                {target = (Pattern("6starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
-                {target = (Pattern("6starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"}}
+                {sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
+                {sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
+                {sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
+                {sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
+                {sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
+                {sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
+                {sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
+                {sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
+                {sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
+                {sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
+                {sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
+                {sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
+                {sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
+                {sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
+                {sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
+                {sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"}}
 fiveStarImages ={
                 {fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
                 {fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
