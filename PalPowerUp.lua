@@ -2,7 +2,7 @@ localPath = scriptPath()
 setImagePath(localPath .. "images")
 Settings:setScriptDimension(true, 1920)
 Settings:setCompareDimension(true, 1920)
-setScanInterval(1/120)
+commonLib = loadstring(httpGet("https://raw.githubusercontent.com/AnkuLua/commonLib/master/commonLib.lua"))()
 
         --- This checks the version number on github to see if an update is needed ---
 getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua"))
