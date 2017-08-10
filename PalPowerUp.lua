@@ -39,22 +39,22 @@ fiveStarRune = (Pattern("5starRunePowerUp.png"):similar(.70))
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {
-                {sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70))},
-                {sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70))},
-                {sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70))},
-                {sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70))},
-                {sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70))},
-                {sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70))},
-                {sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70))},
-                {sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70))},
-                {sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70))},
-                {sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70))},
-                {sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70))},
-                {sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70))},
-                {sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70))},
-                {sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70))},
-                {sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70))},
-                {sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70))}}
+                {("6starLvl0.png"):similar(.70)},
+                {("6starLvl1.png"):similar(.70)},
+                {("6starLvl2.png"):similar(.70)},
+                {("6starLvl3.png"):similar(.70)},
+                {("6starLvl4.png"):similar(.70)},
+                {("6starLvl5.png"):similar(.70)},
+                {("6starLvl6.png"):similar(.70)},
+                {("6starLvl7.png"):similar(.70)},
+                {("6starLvl8.png"):similar(.70)},
+                {("6starLvl9.png"):similar(.70)},
+                {("6starLvl10.png"):similar(.70)},
+                {("6starLvl11.png"):similar(.70)},
+                {("6starLvl12.png"):similar(.70)},
+                {("6starLvl13.png"):similar(.70)},
+                {("6starLvl14.png"):similar(.70)},
+                {("6starLvl15.png"):similar(.70)}}
 fiveStarImages ={
                 {fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
                 {fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
