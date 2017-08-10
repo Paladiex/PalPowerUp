@@ -129,20 +129,23 @@ end
 
 --- This scans the cost to upgrade the rune in order to determine it's level ---
 function findRuneLvl()
+    runeLvlRegion:highlight()
     if runeRank == 6 then
-        index, match = existsMultiMax(data.sixStarImages, mainStatRegion)
+        index, match = existsMultiMax(data.sixStarImages, runeLvlRegion)
         if match then
             match:highlight(2)
             runelevel = (data.images[index])
         end
     end
     if runeRank == 5 then
-        index, match = existsMultiMax(data.fiveStarImages, mainStatRegion)
+        index, match = existsMultiMax(data.fiveStarImages, runeLvlRegion)
         if match then
             match:highlight(2)
             runelevel = (data.images[index])
         end
     end
+    runeLvlRegion:highlight()
+    statRegion8:highlight("Rune Lvl: " .. runeLvl)
 end
 function findRuneLvlOrig()
     runeLvlRegion:highlight()
