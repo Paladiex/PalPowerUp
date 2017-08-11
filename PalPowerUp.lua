@@ -41,7 +41,8 @@ runeLvlRegion = Region(770, 770, 130, 60)
 
 
 --- These are the possible Rune Rank Images ---
-starRuneImages = {"6starRunePowerUp.png", "5starRunePowerUp.png" }
+starRuneImages = {  "6starRunePowerUp.png", "5starRunePowerUp.png", "4starRunePowerUp.png",
+                    "3starRunePowerUp.png", "2starRunePowerUp.png", "1starRunePowerUp.png"}
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -81,8 +82,14 @@ function findRuneRank()
         runeRank = 6
     elseif bestMatchIndex == 2 then
         runeRank = 5
-    else
-        runeRank = "Unknown"
+    elseif bestMatchIndex == 3 then
+        runeRank = 4
+    elseif bestMatchIndex == 4 then
+        runeRank = 3
+    elseif bestMatchIndex == 5 then
+        runeRank = 2
+    elseif bestMatchIndex == 6 then
+        runeRank = 1
     end
     runeRankRegion:highlight()
     statRegion7:highlight("Rune Rank: " .. runeRank)
