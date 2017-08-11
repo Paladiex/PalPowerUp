@@ -18,12 +18,10 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
-r1, g1, b1 = getColor("legendpx.png")
-r2, g2, b2 = getColor("heropx.png")
-r3, g3, b3 = getColor("rarepx.png")
-print (r1)
-print (r2)
-print (r3)
+local loc = Location(800, 480)
+local r,g,b = getColor(loc)
+Toast(r..g..b)
+
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
