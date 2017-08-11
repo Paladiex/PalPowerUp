@@ -272,36 +272,36 @@ function findSubStat4()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat4Region)
     if (bestMatchIndex == 1) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            subStat4subStat5 = ("HP%")
+            subStat4 = ("HP%")
         else
-            subStat4subStat5 = ("HP")
+            subStat4 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            subStat4subStat5 = ("DEF%")
+            subStat4 = ("DEF%")
         else
-            subStat4subStat5 = ("DEF")
+            subStat4 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            subStat4subStat5 = ("ATK%")
+            subStat4 = ("ATK%")
         else
-            subStat4subStat5 = ("ATK")
+            subStat4 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        subStat4subStat5 = ("SPD")
+        subStat4 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        subStat4subStat5 = ("CRI Rate")
+        subStat4 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        subStat4subStat5 = ("CRI DMG")
+        subStat4 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        subStat4subStat5 = ("RES")
+        subStat4 = ("RES")
     end
     if (bestMatchIndex == 8) then
         subStat4 = ("ACC")
