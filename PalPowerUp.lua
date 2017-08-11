@@ -20,7 +20,7 @@ end
 
 local loc = Location(800, 480)
 local r,g,b = getColor(loc)
-Toast(r..g..b)
+toast (r .. g .. b)
 
 
 --- These are the regions at the "Rune Power-up" screen ---
