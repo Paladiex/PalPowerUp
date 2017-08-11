@@ -146,39 +146,39 @@ function findSubStat1()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat1Region)
     if (bestMatchIndex == 1) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("HP%")
+            subStat1 = ("HP%")
         else
-            mainStat = ("HP")
+            subStat1 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("DEF%")
+            subStat1 = ("DEF%")
         else
-            mainStat = ("DEF")
+            subStat1 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("ATK%")
+            subStat1 = ("ATK%")
         else
-            mainStat = ("ATK")
+            subStat1 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        mainStat = ("SPD")
+        subStat1 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        mainStat = ("CRI Rate")
+        subStat1 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        mainStat = ("CRI DMG")
+        subStat1 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        mainStat = ("RES")
+        subStat1 = ("RES")
     end
     if (bestMatchIndex == 8) then
-        mainStat = ("ACC")
+        subStat1 = ("ACC")
     end
     subStat1Region:highlight()
     statRegion2:highlight("Substat 1: " .. subStat1)
@@ -188,39 +188,39 @@ function findSubStat2()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat2Region)
     if (bestMatchIndex == 1) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("HP%")
+            subStat2 = ("HP%")
         else
-            mainStat = ("HP")
+            subStat2 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("DEF%")
+            subStat2 = ("DEF%")
         else
-            mainStat = ("DEF")
+            subStat2 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("ATK%")
+            subStat2 = ("ATK%")
         else
-            mainStat = ("ATK")
+            subStat2 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        mainStat = ("SPD")
+        subStat2 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        mainStat = ("CRI Rate")
+        subStat2 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        mainStat = ("CRI DMG")
+        subStat2 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        mainStat = ("RES")
+        subStat2 = ("RES")
     end
     if (bestMatchIndex == 8) then
-        mainStat = ("ACC")
+        subStat2 = ("ACC")
     end
     subStat2Region:highlight()
     statRegion3:highlight("Substat 2: " .. subStat2)
@@ -230,39 +230,39 @@ function findSubStat3()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat3Region)
     if (bestMatchIndex == 1) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("HP%")
+            subStat3 = ("HP%")
         else
-            mainStat = ("HP")
+            subStat3 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("DEF%")
+            subStat3 = ("DEF%")
         else
-            mainStat = ("DEF")
+            subStat3 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("ATK%")
+            subStat3 = ("ATK%")
         else
-            mainStat = ("ATK")
+            subStat3 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        mainStat = ("SPD")
+        subStat3 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        mainStat = ("CRI Rate")
+        subStat3 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        mainStat = ("CRI DMG")
+        subStat3 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        mainStat = ("RES")
+        subStat3 = ("RES")
     end
     if (bestMatchIndex == 8) then
-        mainStat = ("ACC")
+        subStat3 = ("ACC")
     end
     subStat3Region:highlight()
     statRegion4:highlight("Substat 3: " .. subStat3)
@@ -272,39 +272,39 @@ function findSubStat4()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat4Region)
     if (bestMatchIndex == 1) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("HP%")
+            subStat4subStat5 = ("HP%")
         else
-            mainStat = ("HP")
+            subStat4subStat5 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("DEF%")
+            subStat4subStat5 = ("DEF%")
         else
-            mainStat = ("DEF")
+            subStat4subStat5 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("ATK%")
+            subStat4subStat5 = ("ATK%")
         else
-            mainStat = ("ATK")
+            subStat4subStat5 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        mainStat = ("SPD")
+        subStat4subStat5 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        mainStat = ("CRI Rate")
+        subStat4subStat5 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        mainStat = ("CRI DMG")
+        subStat4subStat5 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        mainStat = ("RES")
+        subStat4subStat5 = ("RES")
     end
     if (bestMatchIndex == 8) then
-        mainStat = ("ACC")
+        subStat4 = ("ACC")
     end
     subStat4Region:highlight()
     statRegion5:highlight("Substat 4: " .. subStat4)
@@ -314,39 +314,39 @@ function findSubStat5()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat5Region)
     if (bestMatchIndex == 1) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("HP%")
+            subStat5 = ("HP%")
         else
-            mainStat = ("HP")
+            subStat5 = ("HP")
         end
     end
     if (bestMatchIndex == 2) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("DEF%")
+            subStat5 = ("DEF%")
         else
-            mainStat = ("DEF")
+            subStat5 = ("DEF")
         end
     end
     if (bestMatchIndex == 3) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
-            mainStat = ("ATK%")
+            subStat5 = ("ATK%")
         else
-            mainStat = ("ATK")
+            subStat5 = ("ATK")
         end
     end
     if (bestMatchIndex == 4) then
-        mainStat = ("SPD")
+        subStat5 = ("SPD")
     end
     if (bestMatchIndex == 5) then
-        mainStat = ("CRI Rate")
+        subStat5 = ("CRI Rate")
     end
     if (bestMatchIndex == 6) then
-        mainStat = ("CRI DMG")
+        subStat5 = ("CRI DMG")
     end
     if (bestMatchIndex == 7) then
-        mainStat = ("RES")
+        subStat5 = ("RES")
     end
     if (bestMatchIndex == 8) then
-        mainStat = ("ACC")
+        subStat5 = ("ACC")
     end
     subStat5Region:highlight()
     statRegion6:highlight("Substat 5: " .. subStat5)
