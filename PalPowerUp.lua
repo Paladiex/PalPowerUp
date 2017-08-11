@@ -11,7 +11,7 @@ currentVersion = dofile(localPath .."version.lua")
 print (currentVersion)
 print (latestVersion)
 if currentVersion == latestVersion then
-    toast ("Remember to Stop Service in the AnkuLua menu to check for updates!")
+    toast ("You are running the most current version!")
 else
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/PalPowerUp.lua", localPath .."PalPowerUp.lua")
