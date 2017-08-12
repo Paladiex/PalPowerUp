@@ -74,18 +74,6 @@ mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "
 subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criRateSub.png",
                     "criDmgSub.png", "resSub.png", "accSub.png"}
 
---- These are the Stats/Variables we want the bot to find ---
-mainStat = "Unknown"
-mainStatValue = "Unknown"
-subStat1 = "Unknown"
-subStatValue1 = "Unknown"
-subStat2 = "Unknown"
-subStatValue2 = "Unknown"
-subStat3 = "Unknown"
-subStatValue3 = "Unknown"
-subStat4 = "Unknown"
-subStatValue4 = "Unknown"
-
 --- This scans the pixels at the location to determine the rarity of the rune ---
 function findRuneRarity()
     (Region(645, 315, 195, 195)):highlight()
@@ -102,7 +90,7 @@ function findRuneRarity()
     elseif (r ==57 and b == 38 and g == 45) then
         runeRarity = "Normal"
     else
-        runeRarity = "Unknown"
+        runeRarity = "NONE"
     end
     (Region(645, 315, 195, 195)):highlight()
     statRegion9:highlight("Rune Rarity: " .. runeRarity)
@@ -124,6 +112,7 @@ function findRuneRank()
         runeRank = 2
     elseif bestMatchIndex == 6 then
         runeRank = 1
+    else runeRank = "NONE"
     end
     runeRankRegion:highlight()
     statRegion7:highlight("Rune Rank: " .. runeRank)
@@ -135,26 +124,22 @@ function findRuneLvl()
     if runeRank == 6 then
         local bestMatchIndex = existsMultiMax(sixStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
-    end
-    if runeRank == 5 then
+    elseif runeRank == 5 then
         local bestMatchIndex = existsMultiMax(fiveStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
-    end
-    if runeRank == 4 then
+    elseif runeRank == 4 then
         local bestMatchIndex = existsMultiMax(fourStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
-    end
-    if runeRank == 3 then
+    elseif runeRank == 3 then
         local bestMatchIndex = existsMultiMax(threeStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
-    end
-    if runeRank == 2 then
+    elseif runeRank == 2 then
         local bestMatchIndex = existsMultiMax(twoStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
-    end
-    if runeRank == 1 then
+    elseif runeRank == 1 then
         local bestMatchIndex = existsMultiMax(oneStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
+    else runeLvl = ("NONE")
     end
     runeLvlRegion:highlight()
     statRegion8:highlight("Rune Lvl: " .. runeLvl)
@@ -170,35 +155,29 @@ function findMainStat()
         else
             mainStat = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
             mainStat = ("DEF%")
         else
             mainStat = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
             mainStat = ("ATK%")
         else
             mainStat = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         mainStat = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         mainStat = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         mainStat = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         mainStat = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         mainStat = ("ACC")
+    else mainStat = ("NONE")
     end
     mainStatRegion:highlight()
     statRegion1:highlight("Main Stat: " .. mainStat)
@@ -212,35 +191,29 @@ function findSubStat1()
         else
             subStat1 = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat1 = ("DEF%")
         else
             subStat1 = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat1 = ("ATK%")
         else
             subStat1 = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         subStat1 = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         subStat1 = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         subStat1 = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         subStat1 = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         subStat1 = ("ACC")
+    else subStat5 = ("NONE")
     end
     subStat1Region:highlight()
     statRegion2:highlight("Substat 1: " .. subStat1)
@@ -254,35 +227,29 @@ function findSubStat2()
         else
             subStat2 = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat2 = ("DEF%")
         else
             subStat2 = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat2 = ("ATK%")
         else
             subStat2 = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         subStat2 = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         subStat2 = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         subStat2 = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         subStat2 = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         subStat2 = ("ACC")
+    else subStat2 = ("NONE")
     end
     subStat2Region:highlight()
     statRegion3:highlight("Substat 2: " .. subStat2)
@@ -296,35 +263,29 @@ function findSubStat3()
         else
             subStat3 = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat3 = ("DEF%")
         else
             subStat3 = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat3 = ("ATK%")
         else
             subStat3 = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         subStat3 = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         subStat3 = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         subStat3 = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         subStat3 = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         subStat3 = ("ACC")
+    else subStat3 = ("NONE")
     end
     subStat3Region:highlight()
     statRegion4:highlight("Substat 3: " .. subStat3)
@@ -338,35 +299,29 @@ function findSubStat4()
         else
             subStat4 = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat4 = ("DEF%")
         else
             subStat4 = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat4 = ("ATK%")
         else
             subStat4 = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         subStat4 = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         subStat4 = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         subStat4 = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         subStat4 = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         subStat4 = ("ACC")
+    else subStat4 = ("NONE")
     end
     subStat4Region:highlight()
     statRegion5:highlight("Substat 4: " .. subStat4)
@@ -380,35 +335,29 @@ function findSubStat5()
         else
             subStat5 = ("HP")
         end
-    end
-    if (bestMatchIndex == 2) then
+    elseif (bestMatchIndex == 2) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat5 = ("DEF%")
         else
             subStat5 = ("DEF")
         end
-    end
-    if (bestMatchIndex == 3) then
+    elseif (bestMatchIndex == 3) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat5 = ("ATK%")
         else
             subStat5 = ("ATK")
         end
-    end
-    if (bestMatchIndex == 4) then
+    elseif (bestMatchIndex == 4) then
         subStat5 = ("SPD")
-    end
-    if (bestMatchIndex == 5) then
+    elseif (bestMatchIndex == 5) then
         subStat5 = ("CRI Rate")
-    end
-    if (bestMatchIndex == 6) then
+    elseif (bestMatchIndex == 6) then
         subStat5 = ("CRI DMG")
-    end
-    if (bestMatchIndex == 7) then
+    elseif (bestMatchIndex == 7) then
         subStat5 = ("RES")
-    end
-    if (bestMatchIndex == 8) then
+    elseif (bestMatchIndex == 8) then
         subStat5 = ("ACC")
+    else subStat5 = ("NONE")
     end
     subStat5Region:highlight()
     statRegion6:highlight("Substat 5: " .. subStat5)
