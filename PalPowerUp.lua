@@ -34,7 +34,7 @@ subStatValue4Region = Region(1330, 560, 200, 50)
 subStatValue5Region = Region(1330, 610, 200, 50)
 runeRankRegion = Region(660, 310, 160, 50)
 runeLvlRegion = Region(770, 770, 130, 60)
-runeRarityRegion = Region(645, 315, 195, 195)
+runeRarityRegion = Region(800, 480, 5, 5)
 
 --- These are the possible Rune Rank Images ---
 starRuneImages = {  "6starRunePowerUp.png", "5starRunePowerUp.png", "4starRunePowerUp.png",
