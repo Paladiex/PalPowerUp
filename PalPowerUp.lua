@@ -101,31 +101,37 @@ function findRuneRank()
     runeRankRegion:highlight()
     local loc = Location(798, 338)
     local r, g, b = getColor(loc)
+    toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
     if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
         runeRank = 6
     else
         local loc = Location(774, 338)
         local r, g, b = getColor(loc)
+        toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
             runeRank = 5
         else
             local loc = Location(750, 338)
             local r, g, b = getColor(loc)
+            toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
             if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                 runeRank = 4
             else
                 local loc = Location(726, 338)
                 local r, g, b = getColor(loc)
+                toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                 if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                     runeRank = 3
                 else
                     local loc = Location(702, 338)
                     local r, g, b = getColor(loc)
+                    toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                     if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                         runeRank = 2
                     else
                         local loc = Location(678, 338)
                         local r, g, b = getColor(loc)
+                        toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                             runeRank = 1
                         else
