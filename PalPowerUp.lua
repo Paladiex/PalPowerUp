@@ -34,7 +34,7 @@ subStatValue4Region = Region(1330, 560, 200, 50)
 subStatValue5Region = Region(1330, 610, 200, 50)
 runeRankRegion = Region(660, 310, 160, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
-
+runeRarityRegion = Region(645, 315, 195, 195)
 
 --- These are the possible Rune Rank Images ---
 starRuneImages = {  "6starRunePowerUp.png", "5starRunePowerUp.png", "4starRunePowerUp.png",
@@ -76,7 +76,7 @@ subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criR
 
 --- This scans the pixels at the location to determine the rarity of the rune ---
 function findRuneRarity()
-    (Region(645, 315, 195, 195)):highlight()
+    runeRarityRegion:highlight()
     local loc = Location(800, 480)
     local r,g,b = getColor(loc)
     if (r == 134 and b == 23 and g == 16) then
@@ -92,7 +92,7 @@ function findRuneRarity()
     else
         runeRarity = "NONE"
     end
-    (Region(645, 315, 195, 195)):highlight()
+    runeRarityRegion:highlight()
     statRegion9:highlight("Rune Rarity: " .. runeRarity)
 end
 
