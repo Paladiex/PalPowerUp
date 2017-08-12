@@ -18,11 +18,6 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
-local loc = Location(800, 480)
-local r,g,b = getColor(loc)
-toast ("r:" .. r .. "g:" .. g .. "b:".. b)
-print ("r:" .. r .. "g:" .. g .. "b:".. b)
-
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
@@ -53,6 +48,22 @@ fiveStarImages ={   "5starLvl0.png", "5starLvl1.png", "5starLvl2.png", "5starLvl
                     "5starLvl4.png", "5starLvl5.png", "5starLvl6.png", "5starLvl7.png",
                     "5starLvl8.png", "5starLvl9.png", "5starLvl10.png", "5starLvl11.png",
                     "5starLvl12.png", "5starLvl13.png", "5starLvl14.png", "5starLvl15.png" }
+fourStarImages ={   "4starLvl0.png", "4starLvl1.png", "4starLvl2.png", "4starLvl3.png",
+                    "4starLvl4.png", "4starLvl5.png", "4starLvl6.png", "4starLvl7.png",
+                    "4starLvl8.png", "4starLvl9.png", "4starLvl10.png", "4starLvl11.png",
+                    "4starLvl12.png", "4starLvl13.png", "4starLvl14.png", "4starLvl15.png" }
+threeStarImages ={   "3starLvl0.png", "3starLvl1.png", "3starLvl2.png", "3starLvl3.png",
+                    "3starLvl4.png", "3starLvl5.png", "3starLvl6.png", "3starLvl7.png",
+                    "3starLvl8.png", "3starLvl9.png", "3starLvl10.png", "3starLvl11.png",
+                    "3starLvl12.png", "3starLvl13.png", "3starLvl14.png", "3starLvl15.png" }
+twoStarImages ={   "2starLvl0.png", "2starLvl1.png", "2starLvl2.png", "2starLvl3.png",
+                    "2starLvl4.png", "2starLvl5.png", "2starLvl6.png", "2starLvl7.png",
+                    "2starLvl8.png", "2starLvl9.png", "2starLvl10.png", "2starLvl11.png",
+                    "2starLvl12.png", "2starLvl13.png", "2starLvl14.png", "2starLvl15.png" }
+oneStarImages ={   "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl3.png",
+                    "1starLvl4.png", "1starLvl5.png", "1starLvl6.png", "1starLvl7.png",
+                    "1starLvl8.png", "1starLvl9.png", "1starLvl10.png", "1starLvl11.png",
+                    "1starLvl12.png", "1starLvl13.png", "1starLvl14.png", "1starLvl15.png" }
 
 --- These are the possible Mainstat Images ---
 mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "criRateMain.png",
@@ -73,6 +84,28 @@ subStat3 = "Unknown"
 subStatValue3 = "Unknown"
 subStat4 = "Unknown"
 subStatValue4 = "Unknown"
+
+--- This scans the pixels at the location to determine the rarity of the rune ---
+function findRuneRarity()
+    (Location(800, 480)):highlight()
+    local loc = Location(800, 480)
+    local r,g,b = getColor(loc)
+    if (r == 134 and b == 23 and g == 16) then
+        runeRarity = "Legendary"
+    elseif (r == 83 and b == 60 and g == 15) then
+        runeRarity = "Hero"
+    elseif (r == 19 and b == 70 and g == 45) then
+        runeRarity = "Rare"
+    elseif (r == 29 and b == 27 and g == 57) then
+        runeRarity = "Magic"
+    elseif (r ==57 and b == 38 and g == 45) then
+        runeRarity = "Normal"
+    else
+        runeRarity = "Unknown"
+    end
+    (Location(800, 480)):highlight()
+    statRegion9:highlight("Rune Rarity: " .. runeRarity)
+end
 
 --- This scans the rank/stars of the rune ---
 function findRuneRank()
@@ -106,8 +139,24 @@ function findRuneLvl()
         local bestMatchIndex = existsMultiMax(fiveStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
     end
+    if runeRank == 4 then
+        local bestMatchIndex = existsMultiMax(fourStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    end
+    if runeRank == 3 then
+        local bestMatchIndex = existsMultiMax(threeStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    end
+    if runeRank == 2 then
+        local bestMatchIndex = existsMultiMax(twoStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    end
+    if runeRank == 1 then
+        local bestMatchIndex = existsMultiMax(oneStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    end
     runeLvlRegion:highlight()
-    statRegion8:highlight("Rune" .. runeLvl)
+    statRegion8:highlight("Rune Lvl: " .. runeLvl)
 end
 
 --- This scans each region for a stat, then the stat value ---
@@ -373,9 +422,11 @@ statRegion5 = Region(720, 560, 400, 50)
 statRegion6 = Region(720, 610, 400, 50)
 statRegion7 = Region(720, 250, 400, 50)
 statRegion8 = Region(720, 300, 400, 50)
+statRegion9 = Region(720, 200, 400, 50)
 
 --- This calls the functions in order that we posted earlier ---
 while true do
+    findRuneRarity()
     findRuneRank()
     findRuneLvl()
     findMainStat()
