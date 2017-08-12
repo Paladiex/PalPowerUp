@@ -32,9 +32,9 @@ subStatValue2Region = Region(1330, 460, 200, 50)
 subStatValue3Region = Region(1330, 510, 200, 50)
 subStatValue4Region = Region(1330, 560, 200, 50)
 subStatValue5Region = Region(1330, 610, 200, 50)
-runeRankRegion = Region(785, 325, 35, 25)
+runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
-runeRarityRegion = Region(800, 480, 5, 5)
+runeRarityRegion = Region(795, 475, 10, 10)
 
 --- These are the possible Rune Rank Images ---
 starRuneImages = {  "6starRunePowerUp.png", "5starRunePowerUp.png", "4starRunePowerUp.png",
@@ -104,41 +104,26 @@ function findRuneRank()
     if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
         runeRank = 6
     else
-        runeRankRegion:highlight()
-        runeRankRegion = Region(761, 325, 35, 25)
-        runeRankRegion:highlight()
         local loc = Location(774, 338)
         local r, g, b = getColor(loc)
         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
             runeRank = 5
         else
-            runeRankRegion:highlight()
-            runeRankRegion = Region(737, 325, 35, 25)
-            runeRankRegion:highlight()
             local loc = Location(750, 338)
             local r, g, b = getColor(loc)
             if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                 runeRank = 4
             else
-                runeRankRegion:highlight()
-                runeRankRegion = Region(723, 325, 35, 25)
-                runeRankRegion:highlight()
                 local loc = Location(726, 338)
                 local r, g, b = getColor(loc)
                 if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                     runeRank = 3
                 else
-                    runeRankRegion:highlight()
-                    runeRankRegion = Region(699, 325, 35, 25)
-                    runeRankRegion:highlight()
                     local loc = Location(702, 338)
                     local r, g, b = getColor(loc)
                     if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                         runeRank = 2
                     else
-                        runeRankRegion:highlight()
-                        runeRankRegion = Region(698, 325, 35, 25)
-                        runeRankRegion:highlight()
                         local loc = Location(678, 338)
                         local r, g, b = getColor(loc)
                         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
