@@ -19,6 +19,10 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
+local loc = Location(800, 480)
+local r,g,b = getColor(loc)
+print (r .. " " .. g .. " " .. b)
+
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
