@@ -4,7 +4,7 @@ Settings:setScriptDimension(true, 1920)
 Settings:setCompareDimension(true, 1920)
 commonLib = loadstring(httpGet("https://raw.githubusercontent.com/AnkuLua/commonLib/master/commonLib.lua"))()
 
-        --- This checks the version number on github to see if an update is needed ---
+        --- This checks the version number on github to see if an update is needed, then downloads the newest files ---
 getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua"))
 latestVersion = getNewestVersion()
 currentVersion = dofile(localPath .."version.lua")
@@ -35,10 +35,6 @@ subStatValue5Region = Region(1330, 610, 200, 50)
 runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
-
---- These are the possible Rune Rank Images ---
-starRuneImages = {  "6starRunePowerUp.png", "5starRunePowerUp.png", "4starRunePowerUp.png",
-                    "3starRunePowerUp.png", "2starRunePowerUp.png", "1starRunePowerUp.png"}
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -74,7 +70,7 @@ mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "
 subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criRateSub.png",
                     "criDmgSub.png", "resSub.png", "accSub.png"}
 
---- This scans the pixels at the location to determine the rarity of the rune ---
+--- This scans the pixels at the location to determine the rarity of the rune based on background color ---
 function findRuneRarity()
     runeRarityRegion:highlight()
     local loc = Location(800, 480)
@@ -96,12 +92,11 @@ function findRuneRarity()
     statRegion9:highlight("Rune Rarity: " .. runeRarity)
 end
 
---- This scans the rank/stars of the rune ---
+--- This scans a pixel starting at the 6th star, then moves to the left to determine the rank/stars of the rune ---
 function findRuneRank()
     runeRankRegion:highlight()
     local loc = Location(798, 338)
     local r, g, b = getColor(loc)
-    toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
     if (r == 253 and g == 208 and b == 12) then
         runeRank = 6
     elseif (r == 244 and g == 58 and b == 222) then
@@ -111,7 +106,6 @@ function findRuneRank()
     else
         local loc = Location(774, 338)
         local r, g, b = getColor(loc)
-        toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
         if (r == 253 and g == 208 and b == 12) then
             runeRank = 5
         elseif (r == 244 and g == 58 and b == 222) then
@@ -121,7 +115,6 @@ function findRuneRank()
         else
             local loc = Location(750, 338)
             local r, g, b = getColor(loc)
-            toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
             if (r == 253 and g == 208 and b == 12) then
                 runeRank = 4
             elseif (r == 244 and g == 58 and b == 222) then
@@ -131,7 +124,6 @@ function findRuneRank()
             else
                 local loc = Location(726, 338)
                 local r, g, b = getColor(loc)
-                toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                 if (r == 253 and g == 208 and b == 12) then
                     runeRank = 3
                 elseif (r == 244 and g == 58 and b == 222) then
@@ -141,7 +133,6 @@ function findRuneRank()
                 else
                     local loc = Location(702, 338)
                     local r, g, b = getColor(loc)
-                    toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                     if (r == 253 and g == 208 and b == 12) then
                         runeRank = 2
                     elseif (r == 244 and g == 58 and b == 222) then
@@ -151,7 +142,6 @@ function findRuneRank()
                     else
                         local loc = Location(678, 338)
                         local r, g, b = getColor(loc)
-                        toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
                         if (r == 253 and g == 208 and b == 12) then
                             runeRank = 1
                         elseif (r == 244 and g == 58 and b == 222) then
@@ -170,28 +160,7 @@ function findRuneRank()
     statRegion7:highlight("Rune Rank: " .. runeRank)
 end
 
-function findRuneRankOrig()
-    runeRankRegion:highlight()
-    local bestMatchIndex = existsMultiMax(starRuneImages, runeRankRegion)
-    if bestMatchIndex == 1 then
-        runeRank = 6
-    elseif bestMatchIndex == 2 then
-        runeRank = 5
-    elseif bestMatchIndex == 3 then
-        runeRank = 4
-    elseif bestMatchIndex == 4 then
-        runeRank = 3
-    elseif bestMatchIndex == 5 then
-        runeRank = 2
-    elseif bestMatchIndex == 6 then
-        runeRank = 1
-    else runeRank = "NONE"
-    end
-    runeRankRegion:highlight()
-    statRegion7:highlight("Rune Rank: " .. runeRank)
-end
-
---- This scans the cost to upgrade the rune in order to determine it's level ---
+--- This scans the mana cost to upgrade the rune in order to determine it's level ---
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
@@ -218,7 +187,7 @@ function findRuneLvl()
     statRegion8:highlight("Rune Lvl: " .. runeLvl)
 end
 
---- This scans each region for a stat, then the stat value ---
+--- These scan each region for a stat, then the stat value area to determine if a percent sign is present ---
 function findMainStat()
     mainStatRegion:highlight()
     local bestMatchIndex = existsMultiMax(mainStatImages, mainStatRegion)
