@@ -19,25 +19,6 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
-local loc1 = Location(798, 338)
-local loc2 = Location(774, 338)
-local loc3 = Location(750, 338)
-local loc4 = Location(725, 338)
-local loc5 = Location(701, 338)
-local loc6 = Location(677, 338)
-local r1, g1, b1 = getColor(loc1)
-local r2, g2, b2 = getColor(loc2)
-local r3, g3, b3 = getColor(loc3)
-local r4, g4, b4 = getColor(loc4)
-local r5, g5, b5 = getColor(loc5)
-local r6, g6, b6 = getColor(loc6)
-print (r1 .. " " .. g1 .. " " .. b1)
-print (r2 .. " " .. g2 .. " " .. b2)
-print (r3 .. " " .. g3 .. " " .. b3)
-print (r4 .. " " .. g4 .. " " .. b4)
-print (r5 .. " " .. g5 .. " " .. b5)
-print (r6 .. " " .. g6 .. " " .. b6)
-
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
@@ -117,6 +98,46 @@ end
 
 --- This scans the rank/stars of the rune ---
 function findRuneRank()
+    local loc = Location(798, 338)
+    local r, g, b = getColor(loc)
+    if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+        runeRank = 6
+    else
+        local loc = loc:targetoffset(-24,0)
+        local r, g, b = getColor(loc)
+        if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+            runeRank = 5
+        else
+            local loc = loc:targetoffset(-24,0)
+            local r, g, b = getColor(loc)
+            if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+                runeRank = 4
+            else
+                local loc = loc:targetoffset(-24,0)
+                local r, g, b = getColor(loc)
+                if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+                    runeRank = 3
+                else
+                    local loc = loc:targetoffset(-24,0)
+                    local r, g, b = getColor(loc)
+                    if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+                        runeRank = 2
+                    else
+                        local loc = loc:targetoffset(-24,0)
+                        local r, g, b = getColor(loc)
+                        if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+                            runeRank = 1
+                        else
+                            runeRank = "NONE"
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+function findRuneRankOrig()
     runeRankRegion:highlight()
     local bestMatchIndex = existsMultiMax(starRuneImages, runeRankRegion)
     if bestMatchIndex == 1 then
