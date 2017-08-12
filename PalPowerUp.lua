@@ -427,4 +427,13 @@ while true do
     findSubStat3()
     findSubStat4()
     findSubStat5()
+    scriptExit (    "Rarity: " .. runeRarity
+                    "Rank: " .. runeRank
+                    "Level: " .. runeLvl
+                    "Main Stat: " .. mainStat
+                    "Sub Stat 1: " .. subStat1
+                    "Sub Stat 2: " .. subStat2
+                    "Sub Stat 3: " .. subStat3
+                    "Sub Stat 4: " .. subsStat4
+                    "Sub Stat 5: " .. subsStat5)
 end
