@@ -32,7 +32,7 @@ subStatValue2Region = Region(1330, 460, 200, 50)
 subStatValue3Region = Region(1330, 510, 200, 50)
 subStatValue4Region = Region(1330, 560, 200, 50)
 subStatValue5Region = Region(1330, 610, 200, 50)
-runeRankRegion = Region(660, 310, 160, 30)
+runeRankRegion = Region(660, 310, 160, 50)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(645, 315, 195, 195)
 
