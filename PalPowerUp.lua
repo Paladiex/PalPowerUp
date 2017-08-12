@@ -105,35 +105,40 @@ function findRuneRank()
         runeRank = 6
     else
         runeRankRegion:highlight()
-        runeRankRegion:targetOffset(-24,0):highlight()
+        runeRankRegion = runeRankRegion:targetOffset(-24,0)
+        runeRankRegion:highlight()
         local loc = loc:targetOffset(-24,0)
         local r, g, b = getColor(loc)
         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
             runeRank = 5
         else
             runeRankRegion:highlight()
-            runeRankRegion:targetOffset(-48,0):highlight()
+            runeRankRegion = runeRankRegion:targetOffset(-24,0)
+            runeRankRegion:highlight()
             local loc = loc:targetOffset(-24,0)
             local r, g, b = getColor(loc)
             if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                 runeRank = 4
             else
                 runeRankRegion:highlight()
-                runeRankRegion:targetOffset(-72,0):highlight()
+                runeRankRegion = runeRankRegion:targetOffset(-24,0)
+                runeRankRegion:highlight()
                 local loc = loc:targetOffset(-24,0)
                 local r, g, b = getColor(loc)
                 if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                     runeRank = 3
                 else
                     runeRankRegion:highlight()
-                    runeRankRegion:targetOffset(-96,0):highlight()
+                    runeRankRegion = runeRankRegion:targetOffset(-24,0)
+                    runeRankRegion:highlight()
                     local loc = loc:targetOffset(-24,0)
                     local r, g, b = getColor(loc)
                     if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
                         runeRank = 2
                     else
                         runeRankRegion:highlight()
-                        runeRankRegion:targetOffset(-120,0):highlight()
+                        runeRankRegion = runeRankRegion:targetOffset(-24,0)
+                        runeRankRegion:highlight()
                         local loc = loc:targetOffset(-24,0)
                         local r, g, b = getColor(loc)
                         if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
@@ -146,6 +151,8 @@ function findRuneRank()
             end
         end
     end
+    runeRankRegion:highlight()
+    statRegion7:highlight("Rune Rank: " .. runeRank)
 end
 
 function findRuneRankOrig()
