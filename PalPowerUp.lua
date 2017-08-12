@@ -108,7 +108,7 @@ function findRuneRank()
         local loc = Location(774, 338)
         local r, g, b = getColor(loc)
         toast ("r:" .. r .. " g:" .. g .. " b:" .. b)
-        if (r == (253 or 244) and g == (208 or 58 or 59) and b == (12 or 222 or 223)) then
+        if ((r == (253 or 244)) and (g == (208 or 58 or 59)) and (b == (12 or 222 or 223))) then
             runeRank = 5
         else
             local loc = Location(750, 338)
