@@ -88,7 +88,7 @@ subStatValue4 = "Unknown"
 
 --- This scans the pixels at the location to determine the rarity of the rune ---
 function findRuneRarity()
-    (Location(800, 480)):highlight()
+    (Region(645, 315, 195, 195)):highlight()
     local loc = Location(800, 480)
     local r,g,b = getColor(loc)
     if (r == 134 and b == 23 and g == 16) then
@@ -104,7 +104,7 @@ function findRuneRarity()
     else
         runeRarity = "Unknown"
     end
-    (Location(800, 480)):highlight()
+    (Region(645, 315, 195, 195)):highlight()
     statRegion9:highlight("Rune Rarity: " .. runeRarity)
 end
 
