@@ -53,15 +53,15 @@ fourStarImages ={   "4starLvl0.png", "4starLvl1.png", "4starLvl2.png", "4starLvl
                     "4starLvl4.png", "4starLvl5.png", "4starLvl6.png", "4starLvl7.png",
                     "4starLvl8.png", "4starLvl9.png", "4starLvl10.png", "4starLvl11.png",
                     "4starLvl12.png", "4starLvl13.png", "4starLvl14.png", "4starLvl15.png" }
-threeStarImages ={   "3starLvl0.png", "3starLvl1.png", "3starLvl2.png", "3starLvl3.png",
+threeStarImages ={  "3starLvl0.png", "3starLvl1.png", "3starLvl2.png", "3starLvl3.png",
                     "3starLvl4.png", "3starLvl5.png", "3starLvl6.png", "3starLvl7.png",
                     "3starLvl8.png", "3starLvl9.png", "3starLvl10.png", "3starLvl11.png",
                     "3starLvl12.png", "3starLvl13.png", "3starLvl14.png", "3starLvl15.png" }
-twoStarImages ={   "2starLvl0.png", "2starLvl1.png", "2starLvl2.png", "2starLvl3.png",
+twoStarImages ={    "2starLvl0.png", "2starLvl1.png", "2starLvl2.png", "2starLvl3.png",
                     "2starLvl4.png", "2starLvl5.png", "2starLvl6.png", "2starLvl7.png",
                     "2starLvl8.png", "2starLvl9.png", "2starLvl10.png", "2starLvl11.png",
                     "2starLvl12.png", "2starLvl13.png", "2starLvl14.png", "2starLvl15.png" }
-oneStarImages ={   "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl3.png",
+oneStarImages ={    "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl3.png",
                     "1starLvl4.png", "1starLvl5.png", "1starLvl6.png", "1starLvl7.png",
                     "1starLvl8.png", "1starLvl9.png", "1starLvl10.png", "1starLvl11.png",
                     "1starLvl12.png", "1starLvl13.png", "1starLvl14.png", "1starLvl15.png" }
