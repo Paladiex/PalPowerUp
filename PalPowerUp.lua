@@ -97,6 +97,7 @@ function dialogBox()
     addEditNumber("upgradeLegendaryLmt", 12)
     addTextView("  ")
     addCheckBox("sellLegendary", "Sell all Legendary runes?", false)
+    dialogShowFullScreen("PalPowerUp Summoners War")
 end
 
 --- This scans the pixels at the location to determine the rarity of the rune based on background color ---
@@ -284,7 +285,7 @@ function findSubStat1()
         subStat1 = ("RES")
     elseif (bestMatchIndex == 8) then
         subStat1 = ("ACC")
-    else subStat5 = ("NONE")
+    else subStat1 = ("NONE")
     end
     subStat1Region:highlight()
     statRegion2:highlight("Substat 1: " .. subStat1)
