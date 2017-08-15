@@ -98,7 +98,6 @@ function dialogBox()
     addTextView("  ")
     addCheckBox("sellLegendary", "Sell all Legendary runes?", false)
 end
-dialogBox()
 
 --- This scans the pixels at the location to determine the rarity of the rune based on background color ---
 function findRuneRarity()
@@ -484,6 +483,7 @@ statRegion9 = Region(720, 200, 400, 50)
 
 --- This calls the functions in order that we posted earlier ---
 while true do
+    dialogBox()
     findRuneRarity()
     findRuneRank()
     findRuneLvl()
