@@ -525,12 +525,20 @@ while true do
     findSubStat5()
     runePowerUp()
     scriptExit (    "Rarity: " .. runeRarity ..
+                    newRow()
                     "Rank: " .. runeRank ..
+                    newRow()
                     "Level: " .. runeLvl ..
+                    newRow()
                     "Main Stat: " .. mainStat ..
+                    newRow()
                     "Sub Stat 1: " .. subStat1 ..
+                    newRow()
                     "Sub Stat 2: " .. subStat2 ..
+                    newRow()
                     "Sub Stat 3: " .. subStat3 ..
+                    newRow()
                     "Sub Stat 4: " .. subStat4 ..
+                    newRow()
                     "Sub Stat 5: " .. subStat5 )
 end
