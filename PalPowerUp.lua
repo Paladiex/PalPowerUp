@@ -468,30 +468,35 @@ function runePowerUp()
         while (runeLvl < upgradeNormalLmt)
             do
                 click(Location(550, 675))
+                wait (3)
                 findRuneLvl()
             end
     elseif runeRarity == "Magic" then
         while (runeLvl < upgradeMagicLmt)
         do
-            cclick(Location(550, 675))
+            click(Location(550, 675))
+            wait (3)
             findRuneLvl()
         end
     elseif runeRarity == "Rare" then
         while (runeLvl < upgradeRareLmt)
         do
             click(Location(550, 675))
+            wait (3)
             findRuneLvl()
         end
     elseif runeRarity == "Hero" then
         while (runeLvl < upgradeHeroLmt)
         do
             click(Location(550, 675))
+            wait (3)
             findRuneLvl()
         end
     elseif runeRarity == "Legendary" then
         while (runeLvl < upgradeLegendaryLmt)
         do
             click(Location(550, 675))
+            wait (3)
             findRuneLvl()
         end
     elseif runeRarity == "NONE" then
