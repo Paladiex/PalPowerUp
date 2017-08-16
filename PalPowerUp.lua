@@ -531,6 +531,6 @@ while true do
                     "Sub Stat 1: " .. subStat1 ..
                     "Sub Stat 2: " .. subStat2 ..
                     "Sub Stat 3: " .. subStat3 ..
-                    "Sub Stat 4: " .. subsStat4 ..
-                    "Sub Stat 5: " .. subsStat5 )
+                    "Sub Stat 4: " .. subStat4 ..
+                    "Sub Stat 5: " .. subStat5 )
 end
