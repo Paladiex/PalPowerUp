@@ -73,27 +73,27 @@ subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criR
 --- This is the dialog box ---
 function dialogBox()
     dialogInit()
-    addTextView("Upgrade Normal to:     ")
+    addTextView("Upgrade Normal to: ")
     addEditNumber("upgradeNormalLmt", 0)
     addTextView("  ")
     addCheckBox("sellNormal", "Sell all Normal runes?", false)
     newRow()
-    addTextView("Upgrade Magic to:      ")
+    addTextView("Upgrade Magic to: ")
     addEditNumber("upgradeMagicLmt", 0)
     addTextView("  ")
     addCheckBox("sellMagic", "Sell all Magic runes?", false)
     newRow()
-    addTextView("Upgrade Rare to:       ")
+    addTextView("Upgrade Rare to: ")
     addEditNumber("upgradeRareLmt", 6)
     addTextView("  ")
     addCheckBox("sellRare", "Sell all Rare runes?", false)
     newRow()
-    addTextView("Upgrade Hero to:       ")
+    addTextView("Upgrade Hero to: ")
     addEditNumber("upgradeHeroLmt", 9)
     addTextView("  ")
     addCheckBox("sellHero", "Sell all Hero runes?", false)
     newRow()
-    addTextView("Upgrade Legendary to:  ")
+    addTextView("Upgrade Legendary to: ")
     addEditNumber("upgradeLegendaryLmt", 12)
     addTextView("  ")
     addCheckBox("sellLegendary", "Sell all Legendary runes?", false)
@@ -119,7 +119,6 @@ function findRuneRarity()
         runeRarity = "NONE"
     end
     runeRarityRegion:highlight()
-    statRegion9:highlight("Rune Rarity: " .. runeRarity)
 end
 
 --- This scans a pixel starting at the 6th star, then moves to the left to determine the rank/stars of the rune ---
@@ -187,7 +186,6 @@ function findRuneRank()
         end
     end
     runeRankRegion:highlight()
-    statRegion7:highlight("Rune Rank: " .. runeRank)
 end
 
 --- This scans the mana cost to upgrade the rune in order to determine it's level ---
@@ -214,7 +212,6 @@ function findRuneLvl()
     else runeLvl = ("NONE")
     end
     runeLvlRegion:highlight()
-    statRegion8:highlight("Rune Lvl: " .. runeLvl)
 end
 
 --- These scan each region for a stat, then the stat value area to determine if a percent sign is present ---
@@ -252,7 +249,6 @@ function findMainStat()
     else mainStat = ("NONE")
     end
     mainStatRegion:highlight()
-    statRegion1:highlight("Main Stat: " .. mainStat)
 end
 function findSubStat1()
     subStat1Region:highlight()
@@ -288,7 +284,6 @@ function findSubStat1()
     else subStat1 = ("NONE")
     end
     subStat1Region:highlight()
-    statRegion2:highlight("Substat 1: " .. subStat1)
 end
 function findSubStat2()
     subStat2Region:highlight()
@@ -324,7 +319,6 @@ function findSubStat2()
     else subStat2 = ("NONE")
     end
     subStat2Region:highlight()
-    statRegion3:highlight("Substat 2: " .. subStat2)
 end
 function findSubStat3()
     subStat3Region:highlight()
@@ -360,7 +354,6 @@ function findSubStat3()
     else subStat3 = ("NONE")
     end
     subStat3Region:highlight()
-    statRegion4:highlight("Substat 3: " .. subStat3)
 end
 function findSubStat4()
     subStat4Region:highlight()
@@ -396,7 +389,6 @@ function findSubStat4()
     else subStat4 = ("NONE")
     end
     subStat4Region:highlight()
-    statRegion5:highlight("Substat 4: " .. subStat4)
 end
 function findSubStat5()
     subStat5Region:highlight()
@@ -432,7 +424,6 @@ function findSubStat5()
     else subStat5 = ("NONE")
     end
     subStat5Region:highlight()
-    statRegion6:highlight("Substat 5: " .. subStat5)
 end
 
 --- This selects the runes in the rune management window ---
@@ -471,16 +462,49 @@ function runeManagementSelection()
     click(Location(1800, 995))
 end
 
---- This is a specified region that displays what the bot thinks it can see ---
-statRegion1 = Region(720, 350, 400, 60)
-statRegion2 = Region(720, 410, 400, 50)
-statRegion3 = Region(720, 460, 400, 50)
-statRegion4 = Region(720, 510, 400, 50)
-statRegion5 = Region(720, 560, 400, 50)
-statRegion6 = Region(720, 610, 400, 50)
-statRegion7 = Region(720, 250, 400, 50)
-statRegion8 = Region(720, 300, 400, 50)
-statRegion9 = Region(720, 200, 400, 50)
+--- This powers up the rune based on the above dialog options ---
+function runePowerUp()
+    if runeRarity == "Normal" then
+        while (runeLvl < upgradeNormalLmt)
+            do
+                click(Location(550, 675))
+                findRuneLvl()
+            end
+    elseif runeRarity == "Magic" then
+        while (runeLvl < upgradeMagicLmt)
+        do
+            cclick(Location(550, 675))
+            findRuneLvl()
+        end
+    elseif runeRarity == "Rare" then
+        while (runeLvl < upgradeRareLmt)
+        do
+            click(Location(550, 675))
+            findRuneLvl()
+        end
+    elseif runeRarity == "Hero" then
+        while (runeLvl < upgradeHeroLmt)
+        do
+            click(Location(550, 675))
+            findRuneLvl()
+        end
+    elseif runeRarity == "Legendary" then
+        while (runeLvl < upgradeLegendaryLmt)
+        do
+            click(Location(550, 675))
+            findRuneLvl()
+        end
+    elseif runeRarity == "NONE" then
+        scriptExit ( "This rune's rarity cannot be determined")
+    end
+end
+
+--- This accesses the rune powerup screen ---
+function goToRuneManagement ()
+    Region(1180, 1000, 160, 50):existsclick(Pattern("monsterIsland.png"):similar(.70))
+    Region(950, 500, 150, 75):existsclick(Pattern("runeButton.png"):similar(.70))
+    Region(1130, 635, 145, 55):existsclick(Pattern("manageButton.png"):similar(.70))
+end
 
 --- This calls the functions in order that we posted earlier ---
 while true do
@@ -494,6 +518,7 @@ while true do
     findSubStat3()
     findSubStat4()
     findSubStat5()
+    runePowerUp()
     scriptExit (    "Rarity: " .. runeRarity
                     "Rank: " .. runeRank
                     "Level: " .. runeLvl
