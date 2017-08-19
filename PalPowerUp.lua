@@ -4,17 +4,18 @@ Settings:setScriptDimension(true, 1920)
 Settings:setCompareDimension(true, 1920)
 commonLib = loadstring(httpGet("https://raw.githubusercontent.com/AnkuLua/commonLib/master/commonLib.lua"))()
 
-        --- This checks the version number on github to see if an update is needed ---
+        --- This checks the version number on github to see if an update is needed, then downloads the newest files ---
 getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua"))
 latestVersion = getNewestVersion()
 currentVersion = dofile(localPath .."version.lua")
 print (currentVersion)
 print (latestVersion)
 if currentVersion == latestVersion then
-    toast ("Remember to Stop Service in the AnkuLua menu to check for updates!")
+    toast ("You are running the most current version!")
 else
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
     httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/PalPowerUp.lua", localPath .."PalPowerUp.lua")
+    httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/imageupdater.lua", localPath .."imageupdater.lua")
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
@@ -24,415 +25,496 @@ subStat1Region = Region(1230, 410, 90, 50)
 subStat2Region = Region(1230, 460, 90, 50)
 subStat3Region = Region(1230, 510, 90, 50)
 subStat4Region = Region(1230, 560, 90, 50)
+subStat5Region = Region(1230, 610, 90, 50)
 mainStatValueRegion = Region(1330, 350, 200, 50)
 subStatValue1Region = Region(1330, 410, 200, 50)
 subStatValue2Region = Region(1330, 460, 200, 50)
 subStatValue3Region = Region(1330, 510, 200, 50)
 subStatValue4Region = Region(1330, 560, 200, 50)
-runeRankRegion = Region(660, 310, 160, 30)
+subStatValue5Region = Region(1330, 610, 200, 50)
+runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
-
-
---- These are the possible Rune Rank Images ---
-sixStarRune = (Pattern("6starRunePowerUp.png"):similar(.80))
-fiveStarRune = (Pattern("5starRunePowerUp.png"):similar(.70))
+runeRarityRegion = Region(790, 470, 20, 20)
 
 --- These are the possible Rune Level Images ---
-sixStarImages = {
-                {sixStarLvl0 = (Pattern("6starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
-                {sixStarLvl1 = (Pattern("6starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
-                {sixStarLvl2 = (Pattern("6starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
-                {sixStarLvl3 = (Pattern("6starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
-                {sixStarLvl4 = (Pattern("6starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
-                {sixStarLvl5 = (Pattern("6starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
-                {sixStarLvl6 = (Pattern("6starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
-                {sixStarLvl7 = (Pattern("6starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
-                {sixStarLvl8 = (Pattern("6starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
-                {sixStarLvl9 = (Pattern("6starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
-                {sixStarLvl10 = (Pattern("6starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
-                {sixStarLvl11 = (Pattern("6starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
-                {sixStarLvl12 = (Pattern("6starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
-                {sixStarLvl13 = (Pattern("6starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
-                {sixStarLvl14 = (Pattern("6starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
-                {sixStarLvl15 = (Pattern("6starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"}}
-fiveStarImages ={
-                {fiveStarLvl0 = (Pattern("5starLvl0.png"):similar(.70)), region = runeLvlRegion, id = "Level 0"},
-                {fiveStarLvl1 = (Pattern("5starLvl1.png"):similar(.70)), region = runeLvlRegion, id = "Level 1"},
-                {fiveStarLvl2 = (Pattern("5starLvl2.png"):similar(.70)), region = runeLvlRegion, id = "Level 2"},
-                {fiveStarLvl3 = (Pattern("5starLvl3.png"):similar(.70)), region = runeLvlRegion, id = "Level 3"},
-                {fiveStarLvl4 = (Pattern("5starLvl4.png"):similar(.70)), region = runeLvlRegion, id = "Level 4"},
-                {fiveStarLvl5 = (Pattern("5starLvl5.png"):similar(.70)), region = runeLvlRegion, id = "Level 5"},
-                {fiveStarLvl6 = (Pattern("5starLvl6.png"):similar(.70)), region = runeLvlRegion, id = "Level 6"},
-                {fiveStarLvl7 = (Pattern("5starLvl7.png"):similar(.70)), region = runeLvlRegion, id = "Level 7"},
-                {fiveStarLvl8 = (Pattern("5starLvl8.png"):similar(.70)), region = runeLvlRegion, id = "Level 8"},
-                {fiveStarLvl9 = (Pattern("5starLvl9.png"):similar(.70)), region = runeLvlRegion, id = "Level 9"},
-                {fiveStarLvl10 = (Pattern("5starLvl10.png"):similar(.70)), region = runeLvlRegion, id = "Level 10"},
-                {fiveStarLvl11 = (Pattern("5starLvl11.png"):similar(.70)), region = runeLvlRegion, id = "Level 11"},
-                {fiveStarLvl12 = (Pattern("5starLvl12.png"):similar(.70)), region = runeLvlRegion, id = "Level 12"},
-                {fiveStarLvl13 = (Pattern("5starLvl13.png"):similar(.70)), region = runeLvlRegion, id = "Level 13"},
-                {fiveStarLvl14 = (Pattern("5starLvl14.png"):similar(.70)), region = runeLvlRegion, id = "Level 14"},
-                {fiveStarLvl15 = (Pattern("5starLvl15.png"):similar(.70)), region = runeLvlRegion, id = "Level 15"}}
+sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
+                    "6starLvl4.png", "6starLvl5.png", "6starLvl6.png", "6starLvl7.png",
+                    "6starLvl8.png", "6starLvl9.png", "6starLvl10.png", "6starLvl11.png",
+                    "6starLvl12.png", "6starLvl13.png", "6starLvl14.png", "6starLvl15.png"}
+fiveStarImages ={   "5starLvl0.png", "5starLvl1.png", "5starLvl2.png", "5starLvl3.png",
+                    "5starLvl4.png", "5starLvl5.png", "5starLvl6.png", "5starLvl7.png",
+                    "5starLvl8.png", "5starLvl9.png", "5starLvl10.png", "5starLvl11.png",
+                    "5starLvl12.png", "5starLvl13.png", "5starLvl14.png", "5starLvl15.png" }
+fourStarImages ={   "4starLvl0.png", "4starLvl1.png", "4starLvl2.png", "4starLvl3.png",
+                    "4starLvl4.png", "4starLvl5.png", "4starLvl6.png", "4starLvl7.png",
+                    "4starLvl8.png", "4starLvl9.png", "4starLvl10.png", "4starLvl11.png",
+                    "4starLvl12.png", "4starLvl13.png", "4starLvl14.png", "4starLvl15.png" }
+threeStarImages ={  "3starLvl0.png", "3starLvl1.png", "3starLvl2.png", "3starLvl3.png",
+                    "3starLvl4.png", "3starLvl5.png", "3starLvl6.png", "3starLvl7.png",
+                    "3starLvl8.png", "3starLvl9.png", "3starLvl10.png", "3starLvl11.png",
+                    "3starLvl12.png", "3starLvl13.png", "3starLvl14.png", "3starLvl15.png" }
+twoStarImages ={    "2starLvl0.png", "2starLvl1.png", "2starLvl2.png", "2starLvl3.png",
+                    "2starLvl4.png", "2starLvl5.png", "2starLvl6.png", "2starLvl7.png",
+                    "2starLvl8.png", "2starLvl9.png", "2starLvl10.png", "2starLvl11.png",
+                    "2starLvl12.png", "2starLvl13.png", "2starLvl14.png", "2starLvl15.png" }
+oneStarImages ={    "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl3.png",
+                    "1starLvl4.png", "1starLvl5.png", "1starLvl6.png", "1starLvl7.png",
+                    "1starLvl8.png", "1starLvl9.png", "1starLvl10.png", "1starLvl11.png",
+                    "1starLvl12.png", "1starLvl13.png", "1starLvl14.png", "1starLvl15.png" }
 
 --- These are the possible Mainstat Images ---
-hpMain = (Pattern("hpMain.png"):similar(.70))
-defMain = (Pattern("defMain.png"):similar(.70))
-atkMain = (Pattern("atkMain.png"):similar(.70))
-spdMain = (Pattern("spdMain.png"):similar(.70))
-criRateMain = (Pattern("criRateMain.png"):similar(.70))
-criDmgMain = (Pattern("criDmgMain.png"):similar(.70))
-resMain = (Pattern("resMain.png"):similar(.70))
-accMain = (Pattern("accMain.png"):similar(.70))
-percentMain = (Pattern("percentMain.png"):similar(.70))
+mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "criRateMain.png",
+                    "criDmgMain.png", "resMain.png", "accMain.png"}
 
 --- These are the possible Substat Images ---
-hpSub = (Pattern("hpSub.png"):similar(.70))
-defSub = (Pattern("defSub.png"):similar(.70))
-atkSub = (Pattern("atkSub.png"):similar(.70))
-spdSub = (Pattern("spdSub.png"):similar(.70))
-criRateSub = (Pattern("criRateSub.png"):similar(.70))
-criDmgSub = (Pattern("criDmgSub.png"):similar(.70))
-resSub = (Pattern("resSub.png"):similar(.70))
-accSub = (Pattern("accSub.png"):similar(.70))
-percentSub = (Pattern("percentSub.png"):similar(.70))
+subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criRateSub.png",
+                    "criDmgSub.png", "resSub.png", "accSub.png"}
 
---- These are the Stats/Variables we want the bot to find ---
-mainStat = "Unknown"
-mainStatValue = "Unknown"
-subStat1 = "Unknown"
-subStatValue1 = "Unknown"
-subStat2 = "Unknown"
-subStatValue2 = "Unknown"
-subStat3 = "Unknown"
-subStatValue3 = "Unknown"
-subStat4 = "Unknown"
-subStatValue4 = "Unknown"
-
---- This scans the rank/stars of the rune ---
-function findRuneRank()
-    runeRankRegion:highlight()
-    if runeRankRegion:exists(sixStarRune) then
-        runeRank = 6
-    elseif runeRankRegion:exists(fiveStarRune) then
-        runeRank = 5
-    else
-        runeRank = "Unknown"
-    end
-    runeRankRegion:highlight()
-    statRegion7:highlight("Rune Rank: " .. runeRank)
+--- This is the dialog box ---
+function dialogBox()
+    dialogInit()
+    addTextView("Upgrade Normal to: ")
+    addEditNumber("upgradeNormalLmt", 0)
+    addTextView("  ")
+    addCheckBox("sellNormal", "Sell all Normal runes?", false)
+    newRow()
+    addTextView("Upgrade Magic to: ")
+    addEditNumber("upgradeMagicLmt", 0)
+    addTextView("  ")
+    addCheckBox("sellMagic", "Sell all Magic runes?", false)
+    newRow()
+    addTextView("Upgrade Rare to: ")
+    addEditNumber("upgradeRareLmt", 6)
+    addTextView("  ")
+    addCheckBox("sellRare", "Sell all Rare runes?", false)
+    newRow()
+    addTextView("Upgrade Hero to: ")
+    addEditNumber("upgradeHeroLmt", 9)
+    addTextView("  ")
+    addCheckBox("sellHero", "Sell all Hero runes?", false)
+    newRow()
+    addTextView("Upgrade Legendary to: ")
+    addEditNumber("upgradeLegendaryLmt", 12)
+    addTextView("  ")
+    addCheckBox("sellLegendary", "Sell all Legendary runes?", false)
+    dialogShowFullScreen("PalPowerUp Summoners War")
 end
 
---- This scans the cost to upgrade the rune in order to determine it's level ---
+--- This scans the pixels at the location to determine the rarity of the rune based on background color ---
+function findRuneRarity()
+    runeRarityRegion:highlight()
+    local loc = Location(800, 480)
+    local r,g,b = getColor(loc)
+    if (r == 134 and b == 23 and g == 16) then
+        runeRarity = "Legendary"
+    elseif (r == 83 and b == 60 and g == 15) then
+        runeRarity = "Hero"
+    elseif (r == 19 and b == 70 and g == 45) then
+        runeRarity = "Rare"
+    elseif (r == 29 and b == 27 and g == 57) then
+        runeRarity = "Magic"
+    elseif (r ==57 and b == 38 and g == 45) then
+        runeRarity = "Normal"
+    else
+        runeRarity = "NONE"
+    end
+    runeRarityRegion:highlight()
+end
+
+--- This scans a pixel starting at the 6th star, then moves to the left to determine the rank/stars of the rune ---
+function findRuneRank()
+    runeRankRegion:highlight()
+    local loc = Location(798, 338)
+    local r, g, b = getColor(loc)
+    if (r == 253 and g == 208 and b == 12) then
+        runeRank = 6
+    elseif (r == 244 and g == 58 and b == 222) then
+        runeRank = 6
+    elseif (r == 244 and g == 59 and b == 223) then
+        runeRank = 6
+    else
+        local loc = Location(774, 338)
+        local r, g, b = getColor(loc)
+        if (r == 253 and g == 208 and b == 12) then
+            runeRank = 5
+        elseif (r == 244 and g == 58 and b == 222) then
+            runeRank = 5
+        elseif (r == 244 and g == 59 and b == 223) then
+            runeRank = 5
+        else
+            local loc = Location(750, 338)
+            local r, g, b = getColor(loc)
+            if (r == 253 and g == 208 and b == 12) then
+                runeRank = 4
+            elseif (r == 244 and g == 58 and b == 222) then
+                runeRank = 4
+            elseif (r == 244 and g == 59 and b == 223) then
+                runeRank = 4
+            else
+                local loc = Location(726, 338)
+                local r, g, b = getColor(loc)
+                if (r == 253 and g == 208 and b == 12) then
+                    runeRank = 3
+                elseif (r == 244 and g == 58 and b == 222) then
+                    runeRank = 3
+                elseif (r == 244 and g == 59 and b == 223) then
+                    runeRank = 3
+                else
+                    local loc = Location(702, 338)
+                    local r, g, b = getColor(loc)
+                    if (r == 253 and g == 208 and b == 12) then
+                        runeRank = 2
+                    elseif (r == 244 and g == 58 and b == 222) then
+                        runeRank = 2
+                    elseif (r == 244 and g == 59 and b == 223) then
+                        runeRank = 2
+                    else
+                        local loc = Location(678, 338)
+                        local r, g, b = getColor(loc)
+                        if (r == 253 and g == 208 and b == 12) then
+                            runeRank = 1
+                        elseif (r == 244 and g == 58 and b == 222) then
+                            runeRank = 1
+                        elseif (r == 244 and g == 59 and b == 223) then
+                            runeRank = 1
+                        else
+                            runeRank = "NONE"
+                        end
+                    end
+                end
+            end
+        end
+    end
+    runeRankRegion:highlight()
+end
+
+--- This scans the mana cost to upgrade the rune in order to determine it's level ---
 function findRuneLvl()
     runeLvlRegion:highlight()
     if runeRank == 6 then
-        local choice regionWaitMulti(sixStarImages, 30, false, nil)
-        runeLvl = choice.id
-    end
-    if runeRank == 5 then
-        local choice regionWaitMulti(fiveStarImages, 30, false, nil)
-        runeLvl = choice.id
-    end
-    runeLvlRegion:highlight()
-    statRegion8:highlight("Rune" .. runeLvl)
-end
-function findRuneLvlOrig()
-    runeLvlRegion:highlight()
-    if runeRank == 6 then
-        if runeLvlRegion:exists(sixStarLvl0) then
-            runeLvl = 0
-        elseif runeLvlRegion:exists(sixStarLvl1) then
-            runeLvl = 1
-        elseif runeLvlRegion:exists(sixStarLvl2) then
-            runeLvl = 2
-        elseif runeLvlRegion:exists(sixStarLvl3) then
-            runeLvl = 3
-        elseif runeLvlRegion:exists(sixStarLvl4) then
-            runeLvl = 4
-        elseif runeLvlRegion:exists(sixStarLvl5) then
-            runeLvl = 5
-        elseif runeLvlRegion:exists(sixStarLvl6) then
-            runeLvl = 6
-        elseif runeLvlRegion:exists(sixStarLvl7) then
-            runeLvl = 7
-        elseif runeLvlRegion:exists(sixStarLvl8) then
-            runeLvl = 8
-        elseif runeLvlRegion:exists(sixStarLvl9) then
-            runeLvl = 9
-        elseif runeLvlRegion:exists(sixStarLvl10) then
-            runeLvl = 10
-        elseif runeLvlRegion:exists(sixStarLvl11) then
-            runeLvl = 11
-        elseif runeLvlRegion:exists(sixStarLvl12) then
-            runeLvl = 12
-        elseif runeLvlRegion:exists(sixStarLvl13) then
-            runeLvl = 13
-        elseif runeLvlRegion:exists(sixStarLvl14) then
-            runeLvl = 14
-        elseif runeLvlRegion:exists(sixStarLvl15) then
-            runeLvl = 15
-        else
-            runeLvl = "Unknown"
-        end
-    end
-    if runeRank == 5 then
-        if runeLvlRegion:exists(fiveStarLvl0) then
-            runeLvl = 0
-        elseif runeLvlRegion:exists(fiveStarLvl1) then
-            runeLvl = 1
-        elseif runeLvlRegion:exists(fiveStarLvl2) then
-            runeLvl = 2
-        elseif runeLvlRegion:exists(fiveStarLvl3) then
-            runeLvl = 3
-        elseif runeLvlRegion:exists(fiveStarLvl4) then
-            runeLvl = 4
-        elseif runeLvlRegion:exists(fiveStarLvl5) then
-            runeLvl = 5
-        elseif runeLvlRegion:exists(fiveStarLvl6) then
-            runeLvl = 6
-        elseif runeLvlRegion:exists(fiveStarLvl7) then
-            runeLvl = 7
-        elseif runeLvlRegion:exists(fiveStarLvl8) then
-            runeLvl = 8
-        elseif runeLvlRegion:exists(fiveStarLvl9) then
-            runeLvl = 9
-        elseif runeLvlRegion:exists(fiveStarLvl10) then
-            runeLvl = 10
-        elseif runeLvlRegion:exists(fiveStarLvl11) then
-            runeLvl = 11
-        elseif runeLvlRegion:exists(fiveStarLvl12) then
-            runeLvl = 12
-        elseif runeLvlRegion:exists(fiveStarLvl13) then
-            runeLvl = 13
-        elseif runeLvlRegion:exists(fiveStarLvl14) then
-            runeLvl = 14
-        elseif runeLvlRegion:exists(fiveStarLvl15) then
-            runeLvl = 15
-        else
-            runeLvl = "Unknown"
-        end
+        local bestMatchIndex = existsMultiMax(sixStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    elseif runeRank == 5 then
+        local bestMatchIndex = existsMultiMax(fiveStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    elseif runeRank == 4 then
+        local bestMatchIndex = existsMultiMax(fourStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    elseif runeRank == 3 then
+        local bestMatchIndex = existsMultiMax(threeStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    elseif runeRank == 2 then
+        local bestMatchIndex = existsMultiMax(twoStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    elseif runeRank == 1 then
+        local bestMatchIndex = existsMultiMax(oneStarImages, runeLvlRegion)
+        runeLvl = (bestMatchIndex - 1)
+    else runeLvl = ("NONE")
     end
     runeLvlRegion:highlight()
-    statRegion8:highlight("Rune Lvl: " .. runeLvl)
 end
 
---- This scans each region for a stat, then the stat value ---
+--- These scan each region for a stat, then the stat value area to determine if a percent sign is present ---
 function findMainStat()
     mainStatRegion:highlight()
-    if mainStatRegion:exists(hpMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "HP%"
+    local bestMatchIndex = existsMultiMax(mainStatImages, mainStatRegion)
+    if (bestMatchIndex == 1) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("HP%")
         else
-            mainStat = "HP"
+            mainStat = ("HP")
         end
-    elseif mainStatRegion:exists(defMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("DEF%")
         else
-            mainStat = "DEF"
+            mainStat = ("DEF")
         end
-    elseif mainStatRegion:exists(atkMain) then
-        if mainStatValueRegion:exists(percentMain) then
-            mainStat = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+            mainStat = ("ATK%")
         else
-            mainStat = "ATK"
+            mainStat = ("ATK")
         end
-    elseif mainStatRegion:exists(spdMain) then
-        mainStat = "SPD"
-    elseif mainStatRegion:exists(criRateMain) then
-        mainStat = "CRI Rate"
-    elseif mainStatRegion:exists(criDmgMain) then
-        mainStat = "CRI DMG"
-    elseif mainStatRegion:exists(resMain) then
-        mainStat = "RES"
-    elseif mainStatRegion:exists(accMain) then
-        mainStat = "ACC"
+    elseif (bestMatchIndex == 4) then
+        mainStat = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        mainStat = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        mainStat = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        mainStat = ("RES")
+    elseif (bestMatchIndex == 8) then
+        mainStat = ("ACC")
+    else mainStat = ("NONE")
     end
     mainStatRegion:highlight()
-    statRegion1:highlight("Main Stat: " .. mainStat)
 end
 function findSubStat1()
     subStat1Region:highlight()
-    if subStat1Region:exists(hpSub) then
-        if subStatValue1Region:exists(percentSub) then
-            subStat1 = "HP%"
+    local bestMatchIndex = existsMultiMax(subStatImages, subStat1Region)
+    if (bestMatchIndex == 1) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat1 = ("HP%")
         else
-            subStat1 = "HP"
+            subStat1 = ("HP")
         end
-    elseif subStat1Region:exists(defSub) then
-        if subStatValue1Region:exists(percentMain) then
-            subStat1 = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat1 = ("DEF%")
         else
-            subStat1 = "DEF"
+            subStat1 = ("DEF")
         end
-    elseif subStat1Region:exists(atkSub) then
-        if subStatValue1Region:exists(percentMain) then
-            subStat1 = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat1 = ("ATK%")
         else
-            subStat1 = "ATK"
+            subStat1 = ("ATK")
         end
-    elseif subStat1Region:exists(spdSub) then
-        subStat1 = "SPD"
-    elseif subStat1Region:exists(criRateSub) then
-        subStat1 = "CRI Rate"
-    elseif subStat1Region:exists(criDmgSub) then
-        subStat1 = "CRI DMG"
-    elseif subStat1Region:exists(resSub) then
-        subStat1 = "RES"
-    elseif subStat1Region:exists(accSub) then
-        subStat1 = "ACC"
+    elseif (bestMatchIndex == 4) then
+        subStat1 = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        subStat1 = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        subStat1 = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        subStat1 = ("RES")
+    elseif (bestMatchIndex == 8) then
+        subStat1 = ("ACC")
+    else subStat1 = ("NONE")
     end
     subStat1Region:highlight()
-    statRegion2:highlight("Substat 1: " .. subStat1)
 end
 function findSubStat2()
     subStat2Region:highlight()
-    if subStat2Region:exists(hpSub) then
-        if subStatValue2Region:exists(percentSub) then
-            subStat2 = "HP%"
+    local bestMatchIndex = existsMultiMax(subStatImages, subStat2Region)
+    if (bestMatchIndex == 1) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat2 = ("HP%")
         else
-            subStat2 = "HP"
+            subStat2 = ("HP")
         end
-    elseif subStat2Region:exists(defSub) then
-        if subStatValue2Region:exists(percentMain) then
-            subStat2 = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat2 = ("DEF%")
         else
-            subStat2 = "DEF"
+            subStat2 = ("DEF")
         end
-    elseif subStat2Region:exists(atkSub) then
-        if subStatValue2Region:exists(percentMain) then
-            subStat2 = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat2 = ("ATK%")
         else
-            subStat2 = "ATK"
+            subStat2 = ("ATK")
         end
-    elseif subStat2Region:exists(spdSub) then
-        subStat2 = "SPD"
-    elseif subStat2Region:exists(criRateSub) then
-        subStat2 = "CRI Rate"
-    elseif subStat2Region:exists(criDmgSub) then
-        subStat2 = "CRI DMG"
-    elseif subStat2Region:exists(resSub) then
-        subStat2 = "RES"
-    elseif subStat2Region:exists(accSub) then
-        subStat2 = "ACC"
+    elseif (bestMatchIndex == 4) then
+        subStat2 = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        subStat2 = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        subStat2 = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        subStat2 = ("RES")
+    elseif (bestMatchIndex == 8) then
+        subStat2 = ("ACC")
+    else subStat2 = ("NONE")
     end
     subStat2Region:highlight()
-    statRegion3:highlight("Substat 2: " .. subStat2)
 end
 function findSubStat3()
     subStat3Region:highlight()
-    if subStat3Region:exists(hpSub) then
-        if subStatValue3Region:exists(percentSub) then
-            subStat3 = "HP%"
+    local bestMatchIndex = existsMultiMax(subStatImages, subStat3Region)
+    if (bestMatchIndex == 1) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat3 = ("HP%")
         else
-            subStat3 = "HP"
+            subStat3 = ("HP")
         end
-    elseif subStat3Region:exists(defSub) then
-        if subStatValue3Region:exists(percentMain) then
-            subStat3 = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat3 = ("DEF%")
         else
-            subStat3 = "DEF"
+            subStat3 = ("DEF")
         end
-    elseif subStat3Region:exists(atkSub) then
-        if subStatValue3Region:exists(percentMain) then
-            subStat3 = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat3 = ("ATK%")
         else
-            subStat3 = "ATK"
+            subStat3 = ("ATK")
         end
-    elseif subStat3Region:exists(spdSub) then
-        subStat3 = "SPD"
-    elseif subStat3Region:exists(criRateSub) then
-        subStat3 = "CRI Rate"
-    elseif subStat3Region:exists(criDmgSub) then
-        subStat3 = "CRI DMG"
-    elseif subStat3Region:exists(resSub) then
-        subStat3 = "RES"
-    elseif subStat3Region:exists(accSub) then
-        subStat3 = "ACC"
+    elseif (bestMatchIndex == 4) then
+        subStat3 = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        subStat3 = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        subStat3 = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        subStat3 = ("RES")
+    elseif (bestMatchIndex == 8) then
+        subStat3 = ("ACC")
+    else subStat3 = ("NONE")
     end
     subStat3Region:highlight()
-    statRegion4:highlight("Substat 3: " .. subStat3)
 end
 function findSubStat4()
     subStat4Region:highlight()
-    if subStat4Region:exists(hpSub) then
-        if subStatValue4Region:exists(percentSub) then
-            subStat4 = "HP%"
+    local bestMatchIndex = existsMultiMax(subStatImages, subStat4Region)
+    if (bestMatchIndex == 1) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat4 = ("HP%")
         else
-            subStat4 = "HP"
+            subStat4 = ("HP")
         end
-    elseif subStat4Region:exists(defSub) then
-        if subStatValue4Region:exists(percentMain) then
-            subStat4 = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat4 = ("DEF%")
         else
-            subStat4 = "DEF"
+            subStat4 = ("DEF")
         end
-    elseif subStat4Region:exists(atkSub) then
-        if subStatValue4Region:exists(percentMain) then
-            subStat4 = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat4 = ("ATK%")
         else
-            subStat4 = "ATK"
+            subStat4 = ("ATK")
         end
-    elseif subStat4Region:exists(spdSub) then
-        subStat4 = "SPD"
-    elseif subStat4Region:exists(criRateSub) then
-        subStat4 = "CRI Rate"
-    elseif subStat4Region:exists(criDmgSub) then
-        subStat4 = "CRI Dmg"
-    elseif subStat4Region:exists(resSub) then
-        subStat4 = "RES"
-    elseif subStat4Region:exists(accSub) then
-        subStat4 = "ACC"
+    elseif (bestMatchIndex == 4) then
+        subStat4 = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        subStat4 = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        subStat4 = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        subStat4 = ("RES")
+    elseif (bestMatchIndex == 8) then
+        subStat4 = ("ACC")
+    else subStat4 = ("NONE")
     end
     subStat4Region:highlight()
-    statRegion5:highlight("Substat 4: " .. subStat4)
 end
 function findSubStat5()
     subStat5Region:highlight()
-    if subStat5Region:exists(hpSub) then
-        if subStatValue5Region:exists(percentSub) then
-            subStat5 = "HP%"
+    local bestMatchIndex = existsMultiMax(subStatImages, subStat5Region)
+    if (bestMatchIndex == 1) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat5 = ("HP%")
         else
-            subStat5 = "HP"
+            subStat5 = ("HP")
         end
-    elseif subStat5Region:exists(defSub) then
-        if subStatValue5Region:exists(percentMain) then
-            subStat5 = "DEF%"
+    elseif (bestMatchIndex == 2) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat5 = ("DEF%")
         else
-            subStat5 = "DEF"
+            subStat5 = ("DEF")
         end
-    elseif subStat5Region:exists(atkSub) then
-        if subStatValue5Region:exists(percentMain) then
-            subStat5 = "ATK%"
+    elseif (bestMatchIndex == 3) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+            subStat5 = ("ATK%")
         else
-            subStat5 = "ATK"
+            subStat5 = ("ATK")
         end
-    elseif subStat5Region:exists(spdSub) then
-        subStat5 = "SPD"
-    elseif subStat5Region:exists(criRateSub) then
-        subStat5 = "CRI Rate"
-    elseif subStat5Region:exists(criDmgSub) then
-        subStat5 = "CRI Dmg"
-    elseif subStat5Region:exists(resSub) then
-        subStat5 = "RES"
-    elseif subStat5Region:exists(accSub) then
-        subStat5 = "ACC"
+    elseif (bestMatchIndex == 4) then
+        subStat5 = ("SPD")
+    elseif (bestMatchIndex == 5) then
+        subStat5 = ("CRI Rate")
+    elseif (bestMatchIndex == 6) then
+        subStat5 = ("CRI DMG")
+    elseif (bestMatchIndex == 7) then
+        subStat5 = ("RES")
+    elseif (bestMatchIndex == 8) then
+        subStat5 = ("ACC")
+    else subStat5 = ("NONE")
     end
     subStat5Region:highlight()
-    statRegion6:highlight("Substat 5: " .. subStat5)
 end
 
---- This is a specified region that displays what the bot thinks it can see ---
-statRegion1 = Region(720, 350, 400, 60)
-statRegion2 = Region(720, 410, 400, 50)
-statRegion3 = Region(720, 460, 400, 50)
-statRegion4 = Region(720, 510, 400, 50)
-statRegion5 = Region(720, 560, 400, 50)
-statRegion6 = Region(720, 610, 400, 50)
-statRegion7 = Region(720, 250, 400, 50)
-statRegion8 = Region(720, 300, 400, 50)
+--- This selects the runes in the rune management window ---
+function runeManagementSelection()
+    click(Location(920, 615))
+    click(Location(1045, 615))
+    click(Location(1175, 615))
+    click(Location(1300, 615))
+    click(Location(1425, 615))
+    click(Location(1550, 615))
+    click(Location(1675, 615))
+    click(Location(1800, 615))
+    click(Location(920, 740))
+    click(Location(1045, 740))
+    click(Location(1175, 740))
+    click(Location(1300, 740))
+    click(Location(1425, 740))
+    click(Location(1550, 740))
+    click(Location(1675, 740))
+    click(Location(1800, 740))
+    click(Location(920, 865))
+    click(Location(1045, 865))
+    click(Location(1175, 865))
+    click(Location(1300, 865))
+    click(Location(1425, 865))
+    click(Location(1550, 865))
+    click(Location(1675, 865))
+    click(Location(1800, 865))
+    click(Location(920, 995))
+    click(Location(1045, 995))
+    click(Location(1175, 995))
+    click(Location(1300, 995))
+    click(Location(1425, 995))
+    click(Location(1550, 995))
+    click(Location(1675, 995))
+    click(Location(1800, 995))
+end
+
+--- This powers up the rune based on the above dialog options ---
+function runePowerUp()
+    if runeRarity == "Normal" then
+        while (runeLvl < upgradeNormalLmt)
+            do
+                click(Location(550, 675))
+                wait (3)
+                findRuneLvl()
+            end
+    elseif runeRarity == "Magic" then
+        while (runeLvl < upgradeMagicLmt)
+        do
+            click(Location(550, 675))
+            wait (3)
+            findRuneLvl()
+        end
+    elseif runeRarity == "Rare" then
+        while (runeLvl < upgradeRareLmt)
+        do
+            click(Location(550, 675))
+            wait (3)
+            findRuneLvl()
+        end
+    elseif runeRarity == "Hero" then
+        while (runeLvl < upgradeHeroLmt)
+        do
+            click(Location(550, 675))
+            wait (3)
+            findRuneLvl()
+        end
+    elseif runeRarity == "Legendary" then
+        while (runeLvl < upgradeLegendaryLmt)
+        do
+            click(Location(550, 675))
+            wait (3)
+            findRuneLvl()
+        end
+    elseif runeRarity == "NONE" then
+        scriptExit ( "This rune's rarity cannot be determined")
+    end
+end
+
+--- This accesses the rune powerup screen ---
+function goToRuneManagement ()
+    Region(1180, 1000, 160, 50):existsclick(Pattern("monsterIsland.png"):similar(.70))
+    Region(950, 500, 150, 75):existsclick(Pattern("runeButton.png"):similar(.70))
+    Region(1130, 635, 145, 55):existsclick(Pattern("manageButton.png"):similar(.70))
+end
 
 --- This calls the functions in order that we posted earlier ---
 while true do
+    dialogBox()
+    findRuneRarity()
     findRuneRank()
     findRuneLvl()
     findMainStat()
@@ -441,4 +523,14 @@ while true do
     findSubStat3()
     findSubStat4()
     findSubStat5()
+    runePowerUp()
+    scriptExit (    "Rarity: " .. runeRarity ..
+                    " Rank: " .. runeRank ..
+                    " Level: " .. runeLvl ..
+                    " Main Stat: " .. mainStat ..
+                    " Sub Stat 1: " .. subStat1 ..
+                    " Sub Stat 2: " .. subStat2 ..
+                    " Sub Stat 3: " .. subStat3 ..
+                    " Sub Stat 4: " .. subStat4 ..
+                    " Sub Stat 5: " .. subStat5 )
 end
