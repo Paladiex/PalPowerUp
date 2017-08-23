@@ -105,15 +105,15 @@ function findRuneRarity()
     runeRarityRegion:highlight()
     local loc = Location(800, 480)
     local r,g,b = getColor(loc)
-    if (r == 134 and b == 23 and g == 16) then
+    if (140>r>130 and 30>b>20 and 20>g>10) then
         runeRarity = "Legendary"
-    elseif (r == 83 and b == 60 and g == 15) then
+    elseif (90>r>80 and 65>b>55 and 20>g>10) then
         runeRarity = "Hero"
-    elseif (r == 19 and b == 70 and g == 45) then
+    elseif (20>r>10 and 70>b>65 and 50>g>40) then
         runeRarity = "Rare"
-    elseif (r == 29 and b == 27 and g == 57) then
+    elseif (30>r>20 and 30>b>20 and 60>g>50) then
         runeRarity = "Magic"
-    elseif (r ==57 and b == 38 and g == 45) then
+    elseif (60>r>50 and 40>b>30 and 50>g>40) then
         runeRarity = "Normal"
     else
         runeRarity = "NONE"
