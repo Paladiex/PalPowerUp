@@ -117,6 +117,7 @@ function findRuneRarity()
         runeRarity = "Normal"
     else
         runeRarity = "NONE"
+        scriptExit ( "This rune's rarity cannot be determined")
     end
     runeRarityRegion:highlight()
 end
