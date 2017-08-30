@@ -84,7 +84,7 @@ subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criR
 function dialogBox()
     dialogInit()
     addTextView("How many runes?")
-    addEditNumber("RuneQuantity", 0)
+    addEditNumber("RuneQuantity", 1)
     newRow()
     addTextView("Upgrade Normal to: ")
     addEditNumber("upgradeNormalLmt", 0)
