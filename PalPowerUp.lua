@@ -468,7 +468,7 @@ function runeManagementSelection()
         wait(Pattern("close.png"):similar(0.6), 3)
         runeEvaluation ()
         runePowerUp()
-        closeButtonRegion:click(Pattern("close.png"):similar(0.6), 3)
+        click(Pattern("close.png"):similar(0.6), 3)
     until(runeX == 6 and runeY == 4)
 end
 
