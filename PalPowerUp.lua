@@ -497,6 +497,7 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
+        toast ("Clicked:"..runeSpot)
         runeEvaluation ()
         runePowerUp()
         click(closeButton)
