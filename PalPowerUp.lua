@@ -19,6 +19,10 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
+--- These are the base values that need to be set to an initial value ---
+runeX = 1
+runeY = 1
+
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
@@ -36,6 +40,34 @@ runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
 
+--- These are the regions needed to get to the "Rune Power-up" screen ---
+closeButton = Region(860, 940, 300, 110)
+
+--- These are the regions needed to automate the rune selection in the "Rune Management" screen ---
+rune1Row1 = Location (920, 615)
+rune2Row1 = Location (1045, 615)
+rune3Row1 = Location (1175, 615)
+rune4Row1 = Location (1300, 615)
+rune5Row1 = Location (1425, 615)
+rune6Row1 = Location (1550, 615)
+rune1Row2 = Location (920, 740)
+rune2Row2 = Location (1045, 740)
+rune3Row2 = Location (1175, 740)
+rune4Row2 = Location (1300, 740)
+rune5Row2 = Location (1425, 740)
+rune6Row2 = Location (1550, 740)
+rune1Row3 = Location (920, 865)
+rune2Row3 = Location (1045, 865)
+rune3Row3 = Location (1175, 865)
+rune4Row3 = Location (1300, 865)
+rune5Row3 = Location (1425, 865)
+rune6Row3 = Location (1550, 865)
+rune1Row4 = Location (920, 995)
+rune2Row4 = Location (1045, 995)
+rune3Row4 = Location (1175, 995)
+rune4Row4 = Location (1300, 995)
+rune5Row4 = Location (1425, 995)
+rune6Row4 = Location (1550, 995)
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
                     "6starLvl4.png", "6starLvl5.png", "6starLvl6.png", "6starLvl7.png",
@@ -427,40 +459,41 @@ function findSubStat5()
     subStat5Region:highlight()
 end
 
+--- This combines the various rune functions to an overall function which evaluates the rune ---
+function runeEvaluation ()
+    findRuneRarity()
+    findRuneRank()
+    findRuneLvl()
+    findMainStat()
+    findSubStat1()
+    findSubStat2()
+    findSubStat3()
+    findSubStat4()
+    findSubStat5()
+end
+
 --- This selects the runes in the rune management window ---
+function runeSpotter ()
+    if runeSoldHid == 1 then
+        runeX = runeX - 1
+        runeSoldHid = 0
+    end
+    if runeX > 5 then runeX = 1 and runeY == runeY+1
+    end
+    if runeY > 4 then runeY = 1
+    end
+    runeSpot = "rune" .. runeX .. "Row".. runeY
+    runeX = runeX+1
+end
+
 function runeManagementSelection()
-    click(Location(920, 615))
-    click(Location(1045, 615))
-    click(Location(1175, 615))
-    click(Location(1300, 615))
-    click(Location(1425, 615))
-    click(Location(1550, 615))
-    click(Location(1675, 615))
-    click(Location(1800, 615))
-    click(Location(920, 740))
-    click(Location(1045, 740))
-    click(Location(1175, 740))
-    click(Location(1300, 740))
-    click(Location(1425, 740))
-    click(Location(1550, 740))
-    click(Location(1675, 740))
-    click(Location(1800, 740))
-    click(Location(920, 865))
-    click(Location(1045, 865))
-    click(Location(1175, 865))
-    click(Location(1300, 865))
-    click(Location(1425, 865))
-    click(Location(1550, 865))
-    click(Location(1675, 865))
-    click(Location(1800, 865))
-    click(Location(920, 995))
-    click(Location(1045, 995))
-    click(Location(1175, 995))
-    click(Location(1300, 995))
-    click(Location(1425, 995))
-    click(Location(1550, 995))
-    click(Location(1675, 995))
-    click(Location(1800, 995))
+    repeat
+        runeSpotter()
+        click(runeSpot)
+        runeEvaluation ()
+        runePowerUp()
+        click(closeButton)
+    until(runeX == 6 and runeY == 4)
 end
 
 --- This powers up the rune based on the above dialog options ---
@@ -515,23 +548,5 @@ end
 --- This calls the functions in order that we posted earlier ---
 while true do
     dialogBox()
-    findRuneRarity()
-    findRuneRank()
-    findRuneLvl()
-    findMainStat()
-    findSubStat1()
-    findSubStat2()
-    findSubStat3()
-    findSubStat4()
-    findSubStat5()
-    runePowerUp()
-    scriptExit (    "Rarity: " .. runeRarity ..
-                    " Rank: " .. runeRank ..
-                    " Level: " .. runeLvl ..
-                    " Main Stat: " .. mainStat ..
-                    " Sub Stat 1: " .. subStat1 ..
-                    " Sub Stat 2: " .. subStat2 ..
-                    " Sub Stat 3: " .. subStat3 ..
-                    " Sub Stat 4: " .. subStat4 ..
-                    " Sub Stat 5: " .. subStat5 )
+    runeManagementSelection()
 end
