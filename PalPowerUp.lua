@@ -39,10 +39,8 @@ subStatValue5Region = Region(1330, 610, 200, 50)
 runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
-
---- These are the regions needed to get to the "Rune Power-up" screen ---
-powerUpButton = Location (1785, 360)
-closeButton = Region(860, 940, 300, 110)
+closeButtonRegion = Region(860, 940, 300, 110)
+powerUpButtonRegion = Location (1670, 320, 230, 85)
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -466,10 +464,11 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
-        click(powerUpButton)
+        powerUpButtonRegion:waitclick(Pattern("powerUp1.png"):similar(0.6))
+        closeButtonRegion:wait(Pattern("close.png"):similar(0.6))
         runeEvaluation ()
         runePowerUp()
-        click(closeButton)
+        closeButtonRegion:click(Pattern("close.png"):similar(0.6))
     until(runeX == 6 and runeY == 4)
 end
 
@@ -506,7 +505,6 @@ function runePowerUp()
     elseif runeRarity == "Legendary" then
         while (runeLvl < upgradeLegendaryLmt)
         do
-            toast ("RuneLvl: " ..runeLvl.. "Limit: " ..upgradeLegendaryLmt)
             click(Location(550, 675))
             wait (3)
             findRuneLvl()

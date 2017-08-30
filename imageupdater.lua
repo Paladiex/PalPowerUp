@@ -119,4 +119,5 @@ httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/image
 httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/images/runeButton.png", imagePath .."runeButton.png")
 httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/images/powerUp1.png", imagePath .."powerUp1.png")
 httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/images/powerUp2.png", imagePath .."powerUp2.png")
+httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/images/close.png", imagePath .."close.png")
 scriptExit("You have Updated the PalPowerUp image library!")
