@@ -476,7 +476,7 @@ end
 function runeSpotter ()
     for i=0, 3 do
         for j=0, 5 do
-            Location(920 + j * 125, 615 + i * 125)
+            runeSpot = Location(920 + j * 125, 615 + i * 125)
         end
     end
 end
