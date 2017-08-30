@@ -474,6 +474,13 @@ end
 
 --- This selects the runes in the rune management window ---
 function runeSpotter ()
+    for i=0, 3 do
+        for j=0, 5 do
+            Location(920 + j * 125, 615 + i * 125)
+        end
+    end
+end
+function runeSpotterOld ()
     if runeSoldHid == 1 then
         runeX = runeX - 1
         runeSoldHid = 0
