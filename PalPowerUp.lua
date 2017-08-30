@@ -22,6 +22,8 @@ end
 --- These are the base values that need to be set to an initial value ---
 runeX = 0
 runeY = 0
+flats = 0
+runeSoldHid = 0
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
@@ -41,6 +43,8 @@ runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
 closeButtonRegion = Region(860, 940, 300, 110)
 powerUpButtonRegion = Location (1670, 320, 230, 85)
+sellButtonRegion = Location (1670, 420, 230, 85)
+yesButtonRegion = Location (655, 590, 280, 120)
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -85,35 +89,35 @@ function dialogBox()
     addTextView("Upgrade Normal to: ")
     addEditNumber("upgradeNormalLmt", 0)
     addTextView("  ")
-    addTextView("How many flat stats to sell?")
+    addTextView("How many flat substats to sell?")
     addEditNumber("normalFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     newRow()
     addTextView("Upgrade Magic to: ")
     addEditNumber("upgradeMagicLmt", 0)
     addTextView("  ")
-    addTextView("How many flat stats to sell?")
+    addTextView("How many flat substats to sell?")
     addEditNumber("magicFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     newRow()
     addTextView("Upgrade Rare to: ")
     addEditNumber("upgradeRareLmt", 3)
     addTextView("  ")
-    addTextView("How many flat stats to sell?")
+    addTextView("How many flat substats to sell?")
     addEditNumber("rareFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     newRow()
     addTextView("Upgrade Hero to: ")
     addEditNumber("upgradeHeroLmt", 9)
     addTextView("  ")
-    addTextView("How many flat stats to sell?")
+    addTextView("How many flat substats to sell?")
     addEditNumber("heroFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     newRow()
     addTextView("Upgrade Legendary to: ")
     addEditNumber("upgradeLegendaryLmt", 12)
     addTextView("  ")
-    addTextView("How many flat stats to sell?")
+    addTextView("How many flat substats to sell?")
     addEditNumber("normalFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     dialogShowFullScreen("PalPowerUp Summoners War")
@@ -278,18 +282,21 @@ function findSubStat1()
             subStat1 = ("HP%")
         else
             subStat1 = ("HP")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat1 = ("DEF%")
         else
             subStat1 = ("DEF")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
         if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat1 = ("ATK%")
         else
             subStat1 = ("ATK")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 4) then
         subStat1 = ("SPD")
@@ -313,18 +320,21 @@ function findSubStat2()
             subStat2 = ("HP%")
         else
             subStat2 = ("HP")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat2 = ("DEF%")
         else
             subStat2 = ("DEF")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
         if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat2 = ("ATK%")
         else
             subStat2 = ("ATK")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 4) then
         subStat2 = ("SPD")
@@ -348,18 +358,21 @@ function findSubStat3()
             subStat3 = ("HP%")
         else
             subStat3 = ("HP")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat3 = ("DEF%")
         else
             subStat3 = ("DEF")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
         if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat3 = ("ATK%")
         else
             subStat3 = ("ATK")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 4) then
         subStat3 = ("SPD")
@@ -383,18 +396,21 @@ function findSubStat4()
             subStat4 = ("HP%")
         else
             subStat4 = ("HP")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat4 = ("DEF%")
         else
             subStat4 = ("DEF")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
         if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat4 = ("ATK%")
         else
             subStat4 = ("ATK")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 4) then
         subStat4 = ("SPD")
@@ -418,18 +434,21 @@ function findSubStat5()
             subStat5 = ("HP%")
         else
             subStat5 = ("HP")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat5 = ("DEF%")
         else
             subStat5 = ("DEF")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
         if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
             subStat5 = ("ATK%")
         else
             subStat5 = ("ATK")
+            flats = flats+1
         end
     elseif (bestMatchIndex == 4) then
         subStat5 = ("SPD")
@@ -472,19 +491,6 @@ function runeSpotter ()
     end
     runeSpot = Location(920 + runeX*125, 615 + runeY*125)
     runeX = runeX+1
-end
-
-function runeManagementSelection()
-    repeat
-        runeSpotter()
-        click(runeSpot)
-        existsClick(Pattern("powerUp1.png"):similar(0.6), 3)
-        wait(Pattern("close.png"):similar(0.6), 3)
-        runeEvaluation ()
-        runePowerUp()
-        click(Pattern("close.png"):similar(0.6), 3)
-        RuneQuantity = RuneQuantity - 1
-    until(RuneQuantity == 0)
 end
 
 --- This powers up the rune based on the above dialog options ---
@@ -534,6 +540,53 @@ function goToRuneManagement ()
     Region(1180, 1000, 160, 50):existsclick(Pattern("monsterIsland.png"):similar(.70))
     Region(950, 500, 150, 75):existsclick(Pattern("runeButton.png"):similar(.70))
     Region(1130, 635, 145, 55):existsclick(Pattern("manageButton.png"):similar(.70))
+end
+
+--- This determines whether to sell the rune based on the above dialog options ---
+function sellGetRune ()
+    if runeRarity == "Legendary" and legendaryFlats <= flats then
+        sellRune()
+        runeSoldHid = 1
+    elseif runeRarity == "Hero" and heroFlats <= flats then
+        sellRune()
+        runeSoldHid = 1
+    elseif runeRarity == "Rare" and rareFlats <= flats then
+        sellRune()
+        runeSoldHid = 1
+    elseif runeRarity == "Magic" and magicFlats <= flats then
+        sellRune()
+        runeSoldHid = 1
+    elseif runeRarity == "Normal" and normalFlats <= flats then
+        sellRune()
+        runeSoldHid = 1
+    end
+end
+
+--- This how the bot handles selling ---
+function sellRune()
+    keyevent (4)
+    waitClick(Pattern("sell.png"):similar(0.6), 3)
+    waitClick(Pattern("yes.png"):similar(0.6), 3)
+    existsClick(Pattern("yes.png"):similar(0.6), 3)
+end
+
+--- This combines the above to call into effect the bot ---
+function runeManagementSelection()
+    repeat
+        runeSpotter()
+        click(runeSpot)
+        waitClick(Pattern("powerUp1.png"):similar(0.6), 3)
+        wait(Pattern("close.png"):similar(0.6), 3)
+        runeEvaluation ()
+        sellGetRune ()
+        if runeSoldHid == 0 then
+            runePowerUp()
+            Click(Pattern("close.png"):similar(0.6), 3)
+        end
+        runeSoldHid = 0
+        RuneQuantity = RuneQuantity - 1
+        flats = 0
+    until(RuneQuantity == 0)
 end
 
 --- This calls the functions in order that we posted earlier ---
