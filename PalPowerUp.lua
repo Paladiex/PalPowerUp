@@ -19,6 +19,10 @@ else
     scriptExit("You have Updated PalPowerUp bot!")
 end
 
+--- These are the base values that need to be set to an initial value ---
+runeX = 0
+runeY = 0
+
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
 subStat1Region = Region(1230, 410, 90, 50)
@@ -35,6 +39,8 @@ subStatValue5Region = Region(1330, 610, 200, 50)
 runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
+closeButtonRegion = Region(860, 940, 300, 110)
+powerUpButtonRegion = Location (1670, 320, 230, 85)
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -61,6 +67,8 @@ oneStarImages ={    "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl
                     "1starLvl4.png", "1starLvl5.png", "1starLvl6.png", "1starLvl7.png",
                     "1starLvl8.png", "1starLvl9.png", "1starLvl10.png", "1starLvl11.png",
                     "1starLvl12.png", "1starLvl13.png", "1starLvl14.png", "1starLvl15.png" }
+powerUp1 = Pattern("powerUp1.png"):similar(0.6)
+close = Pattern("close.png"):similar(0.6)
 
 --- These are the possible Mainstat Images ---
 mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "criRateMain.png",
@@ -427,40 +435,43 @@ function findSubStat5()
     subStat5Region:highlight()
 end
 
+--- This combines the various rune functions to an overall function which evaluates the rune ---
+function runeEvaluation ()
+    findRuneRarity()
+    findRuneRank()
+    findRuneLvl()
+    findMainStat()
+    findSubStat1()
+    findSubStat2()
+    findSubStat3()
+    findSubStat4()
+    findSubStat5()
+end
+
 --- This selects the runes in the rune management window ---
+function runeSpotter ()
+    if runeSoldHid == 1 then
+        runeX = runeX - 1
+        runeSoldHid = 0
+    end
+    if runeX > 7 then runeX = 0 and runeY == runeY+1
+    end
+    if runeY > 3 then runeY = 0
+    end
+    runeSpot = Location(920 + runeX*125, 615 + runeY*125)
+    runeX = runeX+1
+end
+
 function runeManagementSelection()
-    click(Location(920, 615))
-    click(Location(1045, 615))
-    click(Location(1175, 615))
-    click(Location(1300, 615))
-    click(Location(1425, 615))
-    click(Location(1550, 615))
-    click(Location(1675, 615))
-    click(Location(1800, 615))
-    click(Location(920, 740))
-    click(Location(1045, 740))
-    click(Location(1175, 740))
-    click(Location(1300, 740))
-    click(Location(1425, 740))
-    click(Location(1550, 740))
-    click(Location(1675, 740))
-    click(Location(1800, 740))
-    click(Location(920, 865))
-    click(Location(1045, 865))
-    click(Location(1175, 865))
-    click(Location(1300, 865))
-    click(Location(1425, 865))
-    click(Location(1550, 865))
-    click(Location(1675, 865))
-    click(Location(1800, 865))
-    click(Location(920, 995))
-    click(Location(1045, 995))
-    click(Location(1175, 995))
-    click(Location(1300, 995))
-    click(Location(1425, 995))
-    click(Location(1550, 995))
-    click(Location(1675, 995))
-    click(Location(1800, 995))
+    repeat
+        runeSpotter()
+        click(runeSpot)
+        powerUpButtonRegion:existsClick(powerUp1, 3)
+        closeButtonRegion:wait(close, 3)
+        runeEvaluation ()
+        runePowerUp()
+        closeButtonRegion:click(close.png, 3)
+    until(runeX == 6 and runeY == 4)
 end
 
 --- This powers up the rune based on the above dialog options ---
@@ -515,23 +526,5 @@ end
 --- This calls the functions in order that we posted earlier ---
 while true do
     dialogBox()
-    findRuneRarity()
-    findRuneRank()
-    findRuneLvl()
-    findMainStat()
-    findSubStat1()
-    findSubStat2()
-    findSubStat3()
-    findSubStat4()
-    findSubStat5()
-    runePowerUp()
-    scriptExit (    "Rarity: " .. runeRarity ..
-                    " Rank: " .. runeRank ..
-                    " Level: " .. runeLvl ..
-                    " Main Stat: " .. mainStat ..
-                    " Sub Stat 1: " .. subStat1 ..
-                    " Sub Stat 2: " .. subStat2 ..
-                    " Sub Stat 3: " .. subStat3 ..
-                    " Sub Stat 4: " .. subStat4 ..
-                    " Sub Stat 5: " .. subStat5 )
+    runeManagementSelection()
 end
