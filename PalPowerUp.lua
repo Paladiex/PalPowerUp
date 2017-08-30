@@ -464,7 +464,7 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
-        powerUpButtonRegion:waitclick(Pattern("powerUp1.png"):similar(0.6))
+        powerUpButtonRegion:waitClick(Pattern("powerUp1.png"):similar(0.6))
         closeButtonRegion:wait(Pattern("close.png"):similar(0.6))
         runeEvaluation ()
         runePowerUp()
