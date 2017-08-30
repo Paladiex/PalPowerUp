@@ -118,7 +118,7 @@ function dialogBox()
     addEditNumber("upgradeLegendaryLmt", 12)
     addTextView("  ")
     addTextView("How many flat substats to sell?")
-    addEditNumber("normalFlats", 4)
+    addEditNumber("legendaryFlats", 4)
     addTextView("(0 will sell all, 4 will sell none)")
     dialogShowFullScreen("PalPowerUp Summoners War")
 end
