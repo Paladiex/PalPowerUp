@@ -67,6 +67,8 @@ oneStarImages ={    "1starLvl0.png", "1starLvl1.png", "1starLvl2.png", "1starLvl
                     "1starLvl4.png", "1starLvl5.png", "1starLvl6.png", "1starLvl7.png",
                     "1starLvl8.png", "1starLvl9.png", "1starLvl10.png", "1starLvl11.png",
                     "1starLvl12.png", "1starLvl13.png", "1starLvl14.png", "1starLvl15.png" }
+powerUp1 = Pattern("powerUp1.png"):similar(0.6)
+close = Pattern("close.png"):similar(0.6)
 
 --- These are the possible Mainstat Images ---
 mainStatImages = {  "hpMain.png", "defMain.png", "atkMain.png", "spdMain.png", "criRateMain.png",
@@ -464,12 +466,11 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
-        powerUpButtonRegion:wait(Pattern("powerUp1.png"):similar(0.6), 1)
-        powerUpButtonRegion:click(Pattern("powerUp1.png"):similar(0.6), 1)
-        closeButtonRegion:wait(Pattern("close.png"):similar(0.6), 1)
+        powerUpButtonRegion:existsClick(powerUp1, 3)
+        closeButtonRegion:wait(close, 3)
         runeEvaluation ()
         runePowerUp()
-        closeButtonRegion:click(Pattern("close.png"):similar(0.6), 1)
+        closeButtonRegion:click(close.png, 3)
     until(runeX == 6 and runeY == 4)
 end
 
