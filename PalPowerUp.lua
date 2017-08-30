@@ -452,7 +452,7 @@ function runeSpotter ()
         runeX = runeX - 1
         runeSoldHid = 0
     end
-    if runeX > 7 then runeX = 0 and runeY == runeY+1
+    if runeX > 7 then runeX = 0 runeY = runeY+1
     end
     if runeY > 3 then runeY = 0
     end
