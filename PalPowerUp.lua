@@ -20,8 +20,8 @@ else
 end
 
 --- These are the base values that need to be set to an initial value ---
-runeX = 1
-runeY = 1
+runeX = 0
+runeY = 0
 
 --- These are the regions at the "Rune Power-up" screen ---
 mainStatRegion = Region(1230, 350, 90, 50)
@@ -485,11 +485,11 @@ function runeSpotterOld ()
         runeX = runeX - 1
         runeSoldHid = 0
     end
-    if runeX > 5 then runeX = 1 and runeY == runeY+1
+    if runeX > 7 then runeX = 0 and runeY == runeY+1
     end
-    if runeY > 4 then runeY = 1
+    if runeY > 3 then runeY = 0
     end
-    runeSpot = 'rune'..runeX..'Row'..runeY
+    runeSpot = Location(920 + runeX*125, 615 + runeY*125)
     runeX = runeX+1
 end
 
