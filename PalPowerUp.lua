@@ -466,7 +466,7 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
-        click(powerUpRune)
+        click(powerUpButton)
         runeEvaluation ()
         runePowerUp()
         click(closeButton)
