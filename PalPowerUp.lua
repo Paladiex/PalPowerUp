@@ -482,7 +482,7 @@ function runeSpotter ()
     end
     if runeY > 4 then runeY = 1
     end
-    runeSpot = "rune" .. runeX .. "Row".. runeY
+    runeSpot = rune..runeX..Row..runeY
     runeX = runeX+1
 end
 
