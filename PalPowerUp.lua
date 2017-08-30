@@ -41,7 +41,7 @@ runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
 
 --- These are the regions needed to get to the "Rune Power-up" screen ---
-powerUpButton = Region (1690, 335, 200, 50)
+powerUpButton = Location (1785, 360)
 closeButton = Region(860, 940, 300, 110)
 
 --- These are the possible Rune Level Images ---
