@@ -506,6 +506,7 @@ function runePowerUp()
     elseif runeRarity == "Legendary" then
         while (runeLvl < upgradeLegendaryLmt)
         do
+            toast ("RuneLvl: " ..runeLvl.. "Limit: " ..upgradeLegendaryLmt)
             click(Location(550, 675))
             wait (3)
             findRuneLvl()
