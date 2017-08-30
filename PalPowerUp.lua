@@ -79,6 +79,9 @@ subStatImages = {   "hpSub.png", "defSub.png", "atkSub.png", "spdSub.png", "criR
 --- This is the dialog box ---
 function dialogBox()
     dialogInit()
+    addTextView("How many runes?")
+    addEditNumber("RuneQuantity", 0)
+    newRow()
     addTextView("Upgrade Normal to: ")
     addEditNumber("upgradeNormalLmt", 0)
     addTextView("  ")
@@ -470,7 +473,8 @@ function runeManagementSelection()
         runeEvaluation ()
         runePowerUp()
         click(Pattern("close.png"):similar(0.6), 3)
-    until(runeX == 6 and runeY == 4)
+        RuneQuantity = RuneQuantity - 1
+    until(RuneQuantity == 0)
 end
 
 --- This powers up the rune based on the above dialog options ---
