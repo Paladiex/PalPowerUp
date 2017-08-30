@@ -41,33 +41,9 @@ runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
 
 --- These are the regions needed to get to the "Rune Power-up" screen ---
+powerUpButton = Region (1690, 335, 200, 50)
 closeButton = Region(860, 940, 300, 110)
 
---- These are the regions needed to automate the rune selection in the "Rune Management" screen ---
-rune1Row1 = Location (920, 615)
-rune2Row1 = Location (1045, 615)
-rune3Row1 = Location (1175, 615)
-rune4Row1 = Location (1300, 615)
-rune5Row1 = Location (1425, 615)
-rune6Row1 = Location (1550, 615)
-rune1Row2 = Location (920, 740)
-rune2Row2 = Location (1045, 740)
-rune3Row2 = Location (1175, 740)
-rune4Row2 = Location (1300, 740)
-rune5Row2 = Location (1425, 740)
-rune6Row2 = Location (1550, 740)
-rune1Row3 = Location (920, 865)
-rune2Row3 = Location (1045, 865)
-rune3Row3 = Location (1175, 865)
-rune4Row3 = Location (1300, 865)
-rune5Row3 = Location (1425, 865)
-rune6Row3 = Location (1550, 865)
-rune1Row4 = Location (920, 995)
-rune2Row4 = Location (1045, 995)
-rune3Row4 = Location (1175, 995)
-rune4Row4 = Location (1300, 995)
-rune5Row4 = Location (1425, 995)
-rune6Row4 = Location (1550, 995)
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
                     "6starLvl4.png", "6starLvl5.png", "6starLvl6.png", "6starLvl7.png",
@@ -490,6 +466,7 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
+        click(powerUpRune)
         runeEvaluation ()
         runePowerUp()
         click(closeButton)
