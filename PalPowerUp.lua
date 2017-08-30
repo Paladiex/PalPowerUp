@@ -593,4 +593,5 @@ end
 while true do
     dialogBox()
     runeManagementSelection()
+    scriptExit("Done evaluating your runes!")
 end
