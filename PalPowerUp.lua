@@ -581,7 +581,7 @@ function runeManagementSelection()
         sellGetRune ()
         if runeSoldHid == 0 then
             runePowerUp()
-            closeButtonRegion:click(Pattern("close.png"):similar(0.6), 3)
+            closeButtonRegion:Click(Pattern("close.png"):similar(0.6), 3)
         end
         runeSoldHid = 0
         RuneQuantity = RuneQuantity - 1
