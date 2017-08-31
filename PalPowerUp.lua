@@ -42,9 +42,9 @@ runeRankRegion = Region(660, 320, 155, 30)
 runeLvlRegion = Region(770, 770, 130, 60)
 runeRarityRegion = Region(790, 470, 20, 20)
 closeButtonRegion = Region(860, 940, 300, 110)
-powerUpButtonRegion = Location (1670, 320, 230, 85)
-sellButtonRegion = Location (1670, 420, 230, 85)
-yesButtonRegion = Location (655, 590, 280, 120)
+powerUpButtonRegion = Region (1670, 320, 230, 85)
+sellButtonRegion = Region (1670, 420, 230, 85)
+yesButtonRegion = Region (655, 590, 280, 120)
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -487,7 +487,7 @@ function runeSpotter ()
     if runeX > 7 then runeX = 0 runeY = runeY+1
     end
     if runeY > 3 then runeY = 0
-        swipe(Location(920, 995), Location(920, 615))
+        swipe(Location(920, 995), Location(920, 620))
     end
     runeSpot = Location(920 + runeX*125, 615 + runeY*125)
     runeX = runeX+1
@@ -537,9 +537,9 @@ end
 
 --- This accesses the rune powerup screen ---
 function goToRuneManagement ()
-    Region(1180, 1000, 160, 50):existsclick(Pattern("monsterIsland.png"):similar(.70))
-    Region(950, 500, 150, 75):existsclick(Pattern("runeButton.png"):similar(.70))
-    Region(1130, 635, 145, 55):existsclick(Pattern("manageButton.png"):similar(.70))
+    Region(1180, 1000, 160, 50):existsClick(Pattern("monsterIsland.png"):similar(.70))
+    Region(950, 500, 150, 75):existsClick(Pattern("runeButton.png"):similar(.70))
+    Region(1130, 635, 145, 55):existsClick(Pattern("manageButton.png"):similar(.70))
 end
 
 --- This determines whether to sell the rune based on the above dialog options ---
@@ -565,9 +565,9 @@ end
 --- This how the bot handles selling ---
 function sellRune()
     keyevent (4)
-    waitClick(Pattern("sell.png"):similar(0.6), 3)
-    waitClick(Pattern("yes.png"):similar(0.6), 3)
-    existsClick(Pattern("yes.png"):similar(0.6), 3)
+    sellButtonRegion:waitClick(Pattern("sell.png"):similar(0.6), 3)
+    yesButtonRegion:waitClick(Pattern("yes.png"):similar(0.6), 3)
+    yesButtonRegion:existsClick(Pattern("yes.png"):similar(0.6), 3)
 end
 
 --- This combines the above to call into effect the bot ---
@@ -575,13 +575,13 @@ function runeManagementSelection()
     repeat
         runeSpotter()
         click(runeSpot)
-        waitClick(Pattern("powerUp1.png"):similar(0.6), 3)
-        wait(Pattern("close.png"):similar(0.6), 3)
+        powerUpButtonRegion:waitClick(Pattern("powerUp1.png"):similar(0.6), 3)
+        closeButtonRegion:wait(Pattern("close.png"):similar(0.6), 3)
         runeEvaluation ()
         sellGetRune ()
         if runeSoldHid == 0 then
             runePowerUp()
-            click(Pattern("close.png"):similar(0.6), 3)
+            closeButtonRegion:click(Pattern("close.png"):similar(0.6), 3)
         end
         runeSoldHid = 0
         RuneQuantity = RuneQuantity - 1
