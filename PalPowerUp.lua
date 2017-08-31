@@ -244,19 +244,19 @@ function findMainStat()
     mainStatRegion:highlight()
     local bestMatchIndex = existsMultiMax(mainStatImages, mainStatRegion)
     if (bestMatchIndex == 1) then
-        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70), .1) then
             mainStat = ("HP%")
         else
             mainStat = ("HP")
         end
     elseif (bestMatchIndex == 2) then
-        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70), .1) then
             mainStat = ("DEF%")
         else
             mainStat = ("DEF")
         end
     elseif (bestMatchIndex == 3) then
-        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70)) then
+        if  mainStatValueRegion:exists(Pattern("percentMain.png"):similar(.70), .1) then
             mainStat = ("ATK%")
         else
             mainStat = ("ATK")
@@ -279,21 +279,21 @@ function findSubStat1()
     subStat1Region:highlight()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat1Region)
     if (bestMatchIndex == 1) then
-        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat1 = ("HP%")
         else
             subStat1 = ("HP")
             flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
-        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat1 = ("DEF%")
         else
             subStat1 = ("DEF")
             flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
-        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue1Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat1 = ("ATK%")
         else
             subStat1 = ("ATK")
@@ -317,21 +317,21 @@ function findSubStat2()
     subStat2Region:highlight()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat2Region)
     if (bestMatchIndex == 1) then
-        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat2 = ("HP%")
         else
             subStat2 = ("HP")
             flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
-        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat2 = ("DEF%")
         else
             subStat2 = ("DEF")
             flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
-        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue2Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat2 = ("ATK%")
         else
             subStat2 = ("ATK")
@@ -355,21 +355,21 @@ function findSubStat3()
     subStat3Region:highlight()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat3Region)
     if (bestMatchIndex == 1) then
-        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat3 = ("HP%")
         else
             subStat3 = ("HP")
             flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
-        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat3 = ("DEF%")
         else
             subStat3 = ("DEF")
             flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
-        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue3Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat3 = ("ATK%")
         else
             subStat3 = ("ATK")
@@ -393,21 +393,21 @@ function findSubStat4()
     subStat4Region:highlight()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat4Region)
     if (bestMatchIndex == 1) then
-        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat4 = ("HP%")
         else
             subStat4 = ("HP")
             flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
-        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat4 = ("DEF%")
         else
             subStat4 = ("DEF")
             flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
-        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue4Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat4 = ("ATK%")
         else
             subStat4 = ("ATK")
@@ -431,21 +431,21 @@ function findSubStat5()
     subStat5Region:highlight()
     local bestMatchIndex = existsMultiMax(subStatImages, subStat5Region)
     if (bestMatchIndex == 1) then
-        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat5 = ("HP%")
         else
             subStat5 = ("HP")
             flats = flats+1
         end
     elseif (bestMatchIndex == 2) then
-        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat5 = ("DEF%")
         else
             subStat5 = ("DEF")
             flats = flats+1
         end
     elseif (bestMatchIndex == 3) then
-        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70)) then
+        if  subStatValue5Region:exists(Pattern("percentSub.png"):similar(.70), .1) then
             subStat5 = ("ATK%")
         else
             subStat5 = ("ATK")
