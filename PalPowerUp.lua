@@ -489,6 +489,7 @@ function runeSpotter ()
     end
     if runeY > 3 then runeY = 0
         dragDrop(Location(920, 930), Location(920, 550))
+        click(1800, 995)
     end
     runeSpot = Location(920 + runeX*125, 615 + runeY*125)
     runeX = runeX+1
