@@ -585,7 +585,6 @@ function runeManagementSelection()
             runePowerUp()
             closeButtonRegion:waitClick(Pattern("close.png"):similar(0.6), 3)
         end
-        runeSoldHid = 0
         RuneQuantity = RuneQuantity - 1
         flats = 0
     until(RuneQuantity == 0)
