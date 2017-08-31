@@ -567,8 +567,7 @@ function sellRune()
     keyevent (4)
     sellButtonRegion:waitClick(Pattern("sell.png"):similar(0.6), 3)
     yesButtonRegion:waitClick(Pattern("yes.png"):similar(0.6), 3)
-    wait (1)
-    yesButtonRegion:existsClick(Pattern("yes.png"):similar(0.6), 3)
+    existsClick(Pattern("yes.png"):similar(0.6), 3)
 end
 
 --- This combines the above to call into effect the bot ---
