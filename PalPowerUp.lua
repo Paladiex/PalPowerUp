@@ -45,6 +45,7 @@ closeButtonRegion = Region(860, 940, 300, 110)
 powerUpButtonRegion = Region (1670, 320, 230, 85)
 sellButtonRegion = Region (1670, 420, 230, 85)
 yesButtonRegion = Region (655, 590, 280, 120)
+yesButtonRegion2 = Region (655, 655, 280, 120)
 
 --- These are the possible Rune Level Images ---
 sixStarImages = {   "6starLvl0.png", "6starLvl1.png", "6starLvl2.png", "6starLvl3.png",
@@ -567,7 +568,8 @@ function sellRune()
     keyevent (4)
     sellButtonRegion:waitClick(Pattern("sell.png"):similar(0.6), 3)
     yesButtonRegion:waitClick(Pattern("yes.png"):similar(0.6), 3)
-    existsClick(Pattern("yes.png"):similar(0.6), 3)
+    yesButtonRegion2:existsClick(Pattern("yes.png"):similar(0.6), 3)
+    wait(2)
 end
 
 --- This combines the above to call into effect the bot ---
