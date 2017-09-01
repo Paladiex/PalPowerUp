@@ -2,6 +2,9 @@ localPath = scriptPath()
 setImagePath(localPath .. "images")
 Settings:setScriptDimension(true, 1920)
 Settings:setCompareDimension(true, 1920)
+setDragDropTiming(100, 100)
+setDragDropStepCount(10)
+setDragDropStepInterval(100)
 commonLib = loadstring(httpGet("https://raw.githubusercontent.com/AnkuLua/commonLib/master/commonLib.lua"))()
 
         --- This checks the version number on github to see if an update is needed, then downloads the newest files ---
@@ -489,7 +492,6 @@ function runeSpotter ()
     end
     if runeY > 3 then runeY = 0
         dragDrop(Location(920, 930), Location(920, 550))
-        click(1800, 995)
     end
     runeSpot = Location(920 + runeX*125, 615 + runeY*125)
     runeX = runeX+1
@@ -570,7 +572,6 @@ function sellRune()
     sellButtonRegion:waitClick(Pattern("sell.png"):similar(0.6), 3)
     yesButtonRegion:waitClick(Pattern("yes.png"):similar(0.6), 3)
     yesButtonRegion2:existsClick(Pattern("yes.png"):similar(0.6), 3)
-    wait(2.5)
 end
 
 --- This combines the above to call into effect the bot ---
