@@ -207,6 +207,7 @@ function findRuneRank()
                             runeRank = 1
                         else
                             runeRank = "NONE"
+                            scriptExit ( "This rune's rank cannot be determined")
                         end
                     end
                 end
@@ -238,6 +239,7 @@ function findRuneLvl()
         local bestMatchIndex = existsMultiMax(oneStarImages, runeLvlRegion)
         runeLvl = (bestMatchIndex - 1)
     else runeLvl = ("NONE")
+        scriptExit ( "This rune's level cannot be determined")
     end
     runeLvlRegion:highlight()
 end
@@ -275,6 +277,7 @@ function findMainStat()
     elseif (bestMatchIndex == 8) then
         mainStat = ("ACC")
     else mainStat = ("NONE")
+        scriptExit ( "This rune's main stat cannot be determined")
     end
     mainStatRegion:highlight()
 end
