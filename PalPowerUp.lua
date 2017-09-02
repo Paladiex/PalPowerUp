@@ -154,56 +154,44 @@ function findRuneRank()
     runeRankRegion:highlight()
     local loc = Location(798, 338)
     local r, g, b = getColor(loc)
-    if (r == 253 and g == 208 and b == 12) then
+    if (r > 200 and g > 200 and b < 100) then
         runeRank = 6
-    elseif (r == 244 and g == 58 and b == 222) then
-        runeRank = 6
-    elseif (r == 244 and g == 59 and b == 223) then
+    elseif (r > 200 and g < 100 and b > 200) then
         runeRank = 6
     else
         local loc = Location(774, 338)
         local r, g, b = getColor(loc)
-        if (r == 253 and g == 208 and b == 12) then
+        if (r > 200 and g > 200 and b < 100) then
             runeRank = 5
-        elseif (r == 244 and g == 58 and b == 222) then
-            runeRank = 5
-        elseif (r == 244 and g == 59 and b == 223) then
+        elseif (r > 200 and g < 100 and b > 200) then
             runeRank = 5
         else
             local loc = Location(750, 338)
             local r, g, b = getColor(loc)
-            if (r == 253 and g == 208 and b == 12) then
+            if (r > 200 and g > 200 and b < 100) then
                 runeRank = 4
-            elseif (r == 244 and g == 58 and b == 222) then
-                runeRank = 4
-            elseif (r == 244 and g == 59 and b == 223) then
+            elseif (r > 200 and g < 100 and b > 200) then
                 runeRank = 4
             else
                 local loc = Location(726, 338)
                 local r, g, b = getColor(loc)
-                if (r == 253 and g == 208 and b == 12) then
+                if (r > 200 and g > 200 and b < 100) then
                     runeRank = 3
-                elseif (r == 244 and g == 58 and b == 222) then
-                    runeRank = 3
-                elseif (r == 244 and g == 59 and b == 223) then
+                elseif (r > 200 and g < 100 and b > 200) then
                     runeRank = 3
                 else
                     local loc = Location(702, 338)
                     local r, g, b = getColor(loc)
-                    if (r == 253 and g == 208 and b == 12) then
+                    if (r > 200 and g > 200 and b < 100) then
                         runeRank = 2
-                    elseif (r == 244 and g == 58 and b == 222) then
-                        runeRank = 2
-                    elseif (r == 244 and g == 59 and b == 223) then
+                    elseif (r > 200 and g < 100 and b > 200) then
                         runeRank = 2
                     else
                         local loc = Location(678, 338)
                         local r, g, b = getColor(loc)
-                        if (r == 253 and g == 208 and b == 12) then
+                        if (r > 200 and g > 200 and b < 100) then
                             runeRank = 1
-                        elseif (r == 244 and g == 58 and b == 222) then
-                            runeRank = 1
-                        elseif (r == 244 and g == 59 and b == 223) then
+                        elseif (r > 200 and g < 100 and b > 200) then
                             runeRank = 1
                         else
                             runeRank = "NONE"
